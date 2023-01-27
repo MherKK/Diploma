@@ -1,0 +1,88 @@
+.side-bar-container {
+    width: 100%;
+    height: 100%;
+    background: rgb(65, 65, 247);
+    position:fixed;
+    overflow-y: auto;
+    top: 0;
+    left: 0%;
+}
+
+.side-bar_top {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    margin-bottom: 60px;
+}
+
+.close-sidebar-button {
+    background-color: transparent;
+}
+
+.close-sidebar-button > img {
+    width: 40px;
+    height: 40px;
+}
+
+.donate-container {
+    width: 400px;
+    border: 1px solid white;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.donate-container > h3 {
+    font-size: 30px;
+    color: white;
+    font-weight: 600;
+    line-height: 0%;
+}
+
+.donate-container > p {
+    color: white;
+}
+
+.side-bar_containers {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.side-bar_containers > button {
+    background-color: transparent;
+    width: 160px;
+    text-align: left;
+    font-size: 18px;
+    
+}
+
+.side-bar_containers > button:hover {
+    text-decoration: underline;
+}
+
+.bottom-container {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    margin-left: 20px;
+}
+
+
+@media (min-width:1200px) {
+    .bottom-container {
+        flex-direction: row;
+        justify-content: center;
+        gap: 100px;
+    }
+
+    .side-bar_containers > button {
+        width: 200px;
+        font-size: 24px;
+    }
+
+    .side-bar_top > div > img {
+        width: 70px;
+        margin-left: 70px;
+    }
+
+}

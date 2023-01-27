@@ -1,0 +1,37 @@
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 90px;
+    background-color:rgb(221, 111, 8);
+}
+
+
+
+.header-container_middle > p {
+    color: white;
+    text-transform: uppercase;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.header-container > a>  img {
+    position: fixed;
+    top: 18px;
+    left: 15px;
+}
+
+.header-container_middle > button {
+    background-color: transparent;
+    border-radius: 20px;
+    border: 1px solid white;
+    color: white;
+    width: 120px;
+    height: 30px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+.header-container_middle > button:hover {
+    background-color: rgb(238, 145, 58);
+}

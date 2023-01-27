@@ -1,0 +1,40 @@
+.terms {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 17px;
+}
+.terms-container {
+    text-align: left;
+    padding: 15px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.terms-container > h4 {
+    font-size: 30px;
+    letter-spacing: 2px;
+    font-weight: 500;
+    color: rgb(33, 25, 110);
+}
+
+.terms-container > p {
+    letter-spacing: 1px;
+}
+
+.terms-container > h6 {
+    font-size: 17px;
+    color: rgb(33, 25, 110);
+}
+
+.i {
+    font-style: italic;
+    text-decoration: underline;
+    font-weight: 500;
+}
+
+@media (min-width:1000px) {
+    .terms-container {
+        width: 1000px;
+    }
+}
