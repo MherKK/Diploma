@@ -5,6 +5,7 @@ import { Route, Routes } from 'react-router-dom';
 import FirstPage from './FirstPage';
 import Terms from './Footer/Terms/Terms';
 import Privacy from './Footer/Privacy/Privacy';
+import SignUp from './Header/SignUp/SignUp';
 
 function App() {
   return (
@@ -14,7 +15,8 @@ function App() {
               <Route path='/' element={<FirstPage />}>                  
               </Route>
               <Route path='terms' element={<Terms />}/>
-              <Route path="privacy" element={<Privacy />} />
+              <Route path="privacy" element={<Privacy />}/>
+              <Route path='signup' element={<SignUp />} />
           </Routes>
           <Footer />
     </div>

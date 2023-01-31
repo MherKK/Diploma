@@ -12,10 +12,10 @@ export default function Header (){
             <Link to="/"><img alt="" src={logo}></img></Link>
             { location.pathname === "/terms" || location.pathname ==="/privacy" ? " " : <div id="header-middle" className="header-container_middle">
                 <p>Clean up with #Teamarm and track our progress</p>
-                <button>Sign Up</button>
+                <Link target="_blank" to="signup">Sign Up</Link>
             </div>}
             {sideBar === true ? <SideBar setBar={setSideBar}/> : <SideBarMenu setBar={setSideBar}/> }
              
         </div>
     )
-}
+} 

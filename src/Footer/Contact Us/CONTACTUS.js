@@ -14,15 +14,15 @@ export default function ContactUs ({setOPen,root}) {
                 <form className="contact-us_form">
                     <div>
                         <label>Name *</label>
-                        <input type="text"/>
+                        <input type="text" placeholder="Name"/>
                     </div>
                     <div>
                         <label>Email Address *</label>
-                        <input type="email" />
+                        <input type="email" placeholder="Email Address"/>
                     </div>
                     <div>
                         <label>Subject *</label>
-                        <input id="subject" type="text" />
+                        <input id="subject" type="text" placeholder="Subject"/>
                     </div>
                     <div>
                         <label>Message *</label>

@@ -14,19 +14,19 @@ export default function PressInquiries ({setOPen,root}) {
                 <form className="contact-us_form">
                     <div>
                         <label>Name *</label>
-                        <input type="text"/>
+                        <input type="text" placeholder="Name"/>
                     </div>
                     <div>
                         <label>Company or Organization *</label>
-                        <input type="text" />
+                        <input type="text" placeholder="Company Name"/>
                     </div>
                     <div>
                         <label>Email Address *</label>
-                        <input  type="email" />
+                        <input  type="email" placeholder="Email"/>
                     </div>
                     <div>
                         <label>Phone</label>
-                        <input  type="number" />
+                        <input  type="number" placeholder="Phone Number"/>
                     </div>
                     <div>
                         <label>Message *</label>
