@@ -10,6 +10,8 @@ export default function SideBarMenu ({setBar}) {
                     <div><img alt="" src={logo}/></div>
                     <button onClick={() =>{
                         root2.style.overflowY = "visible";
+
+                        
                         setBar(true);
                     }}  className="close-sidebar-button"><img alt="" src={close}/></button>
                 </div>
