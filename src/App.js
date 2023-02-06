@@ -9,22 +9,31 @@ import SignUp from './Header/SignUp/SignUp';
 import SecondPage from './SecondPage/SecondPage';
 import { useState } from 'react';
 
+
+
+
 function App() {
-  let [name,setName] = useState("");
-  let [lastName,setLastName] = useState("");
+
+let user ={
+  userName:"",
+  password:"",
+  email:"",
+  phoneNumber:""
+}
+let [userDetails,setUserDetails] = useState(user);
+let [signup, setSignUp] = useState(true);
   return (
     <div className="App" >
-          <Header name={name} lastName={lastName}/>       
+         {signup === true ? 
+          <Header setSignUp={setSignUp} User={userDetails} /> :
+          <SignUp setSignUp={setSignUp} 
+          User = {userDetails} setUserDetails={setUserDetails}
+          />}
+                 
           <Routes>
-              <Route path='/' element={name === "" ? <FirstPage /> : <SecondPage />}/>                   
+              <Route path='/' element={userDetails.userName === "" ? <FirstPage /> : <SecondPage />}/>                   
               <Route path='terms' element={<Terms />}/>
-              <Route path="privacy" element={<Privacy />}/>
-              <Route path='signup' 
-              element={<SignUp 
-                name={name} setName={setName} 
-                lastName={lastName} setLastName={setLastName}/>} 
-                />
-             
+              <Route path="privacy" element={<Privacy />}/>            
           </Routes>
           <Footer />
     </div>
