@@ -22,7 +22,7 @@ export default function SignUp({setSignUp,User,setUserDetails}){
     }
    async function submitHandler(e){
     e.preventDefault();
-    if(errorPassword === "Is Not Strong Password" && errorEmail === "Please,enter valid Email!" && (User.userName === "" || User.password === "" || User.email === "" || User.phoneNumber === "")){
+    if(errorPassword === "Is Not Strong Password" || errorEmail === "Please,enter a valid Email!" || (User.userName === "" || User.password === "" || User.email === "" || User.phoneNumber === "")){
          setSignUp(false)
         
     }else{
@@ -41,7 +41,6 @@ export default function SignUp({setSignUp,User,setUserDetails}){
     }
     
    }
-
    const passwordChecker = () =>{
     if(User.password.length === 0){
         seterrorPassword(false)
@@ -62,11 +61,15 @@ export default function SignUp({setSignUp,User,setUserDetails}){
    }
 
    function emailChecker(){
+   if(User.email.length === 0){
+    setErrorEmail(false)
+   }else{
     if(validator.isEmail(User.email)){
         setErrorEmail("true")
     }else{
-        setErrorEmail("Please,enter valid Email!")
+        setErrorEmail("Please,enter a valid Email!")
     }
+   }
    }
     return (
         <div className="signup-container">
@@ -86,14 +89,14 @@ export default function SignUp({setSignUp,User,setUserDetails}){
                     <form onSubmit={submitHandler} className="form-container" >
                         <label>
                             <p style={{...Style,display:displayuserName}}>Username is Required</p>
-                            <input required={true}  type="text" placeholder="Username *" value={User.userName}  onChange={(e) =>{
+                            <input   type="text" placeholder="Username *" value={User.userName}  onChange={(e) =>{
                                 setUserDetails({...User,userName:e.target.value})
                                 e.preventDefault();
                             }}/>
                         </label>
                         <label>
                             <p style={{...Style,display:displaypassword}}>Password is Required</p>
-                            <input required={true}  value={User.lastName} onChange={(e) =>{
+                            <input   value={User.lastName} onChange={(e) =>{
                                 setUserDetails({...User,password:e.target.value});
                                 e.preventDefault();
                                 passwordChecker();
@@ -102,10 +105,9 @@ export default function SignUp({setSignUp,User,setUserDetails}){
                         </label>
                         <label>
                             <p style={{...Style,display:displayEmail}}>Email is Required</p>
-                            <input required={true} type="email" placeholder="Email *" value={User.email} onChange={(e) =>{
+                            <input  type="email" placeholder="Email *" value={User.email} onChange={(e) =>{
                                 setUserDetails({...User,email:e.target.value});
-                                emailChecker();
-                                
+                                emailChecker();  
                                 }
                             }
                             />
@@ -113,14 +115,14 @@ export default function SignUp({setSignUp,User,setUserDetails}){
                         </label>
                         <label>
                            <p style={{...Style,display:displayPhone}}>PhoneNumber is Required</p>
-                            <input required={true} type="tel" placeholder="Phone Number *" value={User.phoneNumber} onChange={(e) =>{
+                            <input  type="number"  placeholder="Phone Number *" value={User.phoneNumber} onChange={(e) =>{
                                 setUserDetails({...User,phoneNumber:e.target.value});
                                 e.preventDefault();
                                 }
                             }/>
                         </label>
                         <label id="opt-in-label">
-                            <input type="checkbox" required={true} />
+                            <input type="checkbox"  />
                             <p> Opt in to mobile messages from #TeamARM about the events.</p>
                         </label>
                         <button type="submit" className="signup-submit" onClick={(e)=>{
