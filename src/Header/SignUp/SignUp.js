@@ -1,4 +1,4 @@
-
+import validator from "validator";
 import { useState } from "react";
 import Footer from "../../Footer/Footer"
 import logo from "../../Header/logo2.png"
@@ -12,17 +12,19 @@ export default function SignUp({setSignUp,User,setUserDetails}){
     let [displaypassword,setDisplaypassword] = useState("none");
     let [displayEmail,setDisplayEmail] = useState("none");
     let [displayPhone,setDisplayPhone] = useState("none");
+    let [errorPassword, seterrorPassword] = useState("");
+    let [errorEmail,setErrorEmail] = useState("");
     let Style = {
         color:"red",
         fontSize:"14px",
         lineHeight:"0",
         marginLeft:"5px"
     }
-
-   const submitHandler = async (e) =>{
+   async function submitHandler(e){
     e.preventDefault();
-    if(User.userName === "" || User.password === "" || User.email === "" || User.phoneNumber === "" ){
-        setSignUp(false)
+    if(errorPassword === "Is Not Strong Password" && errorEmail === "Please,enter valid Email!" && (User.userName === "" || User.password === "" || User.email === "" || User.phoneNumber === "")){
+         setSignUp(false)
+        
     }else{
         root2.style.overflowY = "visible";  
         setSignUp(true)  
@@ -36,20 +38,36 @@ export default function SignUp({setSignUp,User,setUserDetails}){
             PhoneNumber: User.phoneNumber,
             timeStamp: serverTimestamp()
         })
-       
-        setUserDetails({
-            userName:"",
-            password:"",
-            email:"",
-            phoneNumber:""
-        })
     }
-    User.userName === "" ? setDisplayuserName("block") : setDisplayuserName("none");
-    User.password === "" ? setDisplaypassword("block") : setDisplaypassword("none");
-    User.email === "" ? setDisplayEmail("block") : setDisplayEmail("none");
-    User.phoneNumber === "" ? setDisplayPhone("block") : setDisplayPhone("none");
+    
    }
 
+   const passwordChecker = () =>{
+    if(User.password.length === 0){
+        seterrorPassword(false)
+       }else{
+        if(validator.isStrongPassword(User.password,{
+            minLength: 6,
+            minLowercase: 1,
+            minUppercase: 1,
+            minNumbers:0,
+            minSymbols:0
+        })){
+            seterrorPassword("true")
+            
+        }else{
+            seterrorPassword("Is Not Strong Password")
+        }
+       }
+   }
+
+   function emailChecker(){
+    if(validator.isEmail(User.email)){
+        setErrorEmail("true")
+    }else{
+        setErrorEmail("Please,enter valid Email!")
+    }
+   }
     return (
         <div className="signup-container">
             <div className="signup-container_top">
@@ -70,26 +88,34 @@ export default function SignUp({setSignUp,User,setUserDetails}){
                             <p style={{...Style,display:displayuserName}}>Username is Required</p>
                             <input required={true}  type="text" placeholder="Username *" value={User.userName}  onChange={(e) =>{
                                 setUserDetails({...User,userName:e.target.value})
+                                e.preventDefault();
                             }}/>
                         </label>
                         <label>
                             <p style={{...Style,display:displaypassword}}>Password is Required</p>
                             <input required={true}  value={User.lastName} onChange={(e) =>{
                                 setUserDetails({...User,password:e.target.value});
+                                e.preventDefault();
+                                passwordChecker();
                             }} type="password" placeholder="Password *"  />
+                            {errorPassword === "true" ?  "" : <p style={{...Style,fontSize:"10px"}}>{errorPassword}</p>}
                         </label>
                         <label>
                             <p style={{...Style,display:displayEmail}}>Email is Required</p>
                             <input required={true} type="email" placeholder="Email *" value={User.email} onChange={(e) =>{
                                 setUserDetails({...User,email:e.target.value});
+                                emailChecker();
+                                
                                 }
                             }
                             />
+                            {errorEmail === "true" ?  "" : <p style={{...Style,fontSize:"10px"}}>{errorEmail}</p>}
                         </label>
                         <label>
                            <p style={{...Style,display:displayPhone}}>PhoneNumber is Required</p>
                             <input required={true} type="tel" placeholder="Phone Number *" value={User.phoneNumber} onChange={(e) =>{
                                 setUserDetails({...User,phoneNumber:e.target.value});
+                                e.preventDefault();
                                 }
                             }/>
                         </label>
@@ -97,7 +123,14 @@ export default function SignUp({setSignUp,User,setUserDetails}){
                             <input type="checkbox" required={true} />
                             <p> Opt in to mobile messages from #TeamARM about the events.</p>
                         </label>
-                        <button type="submit" className="signup-submit" >Submit</button>
+                        <button type="submit" className="signup-submit" onClick={(e)=>{
+                            User.userName === "" ? setDisplayuserName("block") : setDisplayuserName("none");
+                            User.password === "" ? setDisplaypassword("block") : setDisplaypassword("none");
+                            User.email === "" ? setDisplayEmail("block") : setDisplayEmail("none");
+                            User.phoneNumber === "" ? setDisplayPhone("block") : setDisplayPhone("none");
+                          
+                           
+                        }}>Submit</button>
                     </form>
                    
                 </div>
