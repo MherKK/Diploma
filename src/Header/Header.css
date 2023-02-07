@@ -2,7 +2,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 90px;
+    height: 110px;
     background-color:rgb(221, 111, 8);
 }
 
@@ -34,4 +34,12 @@
 }
 .header-container_middle > button:hover {
     background-color: rgb(238, 145, 58);
+}
+
+.header-middle_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
 }

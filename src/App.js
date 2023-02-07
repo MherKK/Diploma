@@ -8,6 +8,7 @@ import Privacy from './Footer/Privacy/Privacy';
 import SignUp from './Header/SignUp/SignUp';
 import SecondPage from './SecondPage/SecondPage';
 import { useState } from 'react';
+import Login from './Header/LogIn/Login';
 
 
 
@@ -22,14 +23,15 @@ let user ={
 }
 let [userDetails,setUserDetails] = useState(user);
 let [signup, setSignUp] = useState(true);
+let [login,setLoginIn] = useState(false);
   return (
     <div className="App" >
          {signup === true ? 
-          <Header setSignUp={setSignUp} User={userDetails} /> :
+          <Header setSignUp={setSignUp} User={userDetails} setLoginIn={setLoginIn} /> :
           <SignUp setSignUp={setSignUp} 
           User = {userDetails} setUserDetails={setUserDetails}
           />}
-                 
+          {login === false ? <p>Hey</p> : <Login setLoginIn={setLoginIn}/>}       
           <Routes>
               <Route path='/' element={userDetails.userName === "" ? <FirstPage /> : <SecondPage />}/>                   
               <Route path='terms' element={<Terms />}/>

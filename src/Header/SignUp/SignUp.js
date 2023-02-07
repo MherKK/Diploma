@@ -1,7 +1,7 @@
 import validator from "validator";
 import { useState } from "react";
 import Footer from "../../Footer/Footer"
-import logo from "../../Header/logo2.png"
+import orgLogo from "../../Assets/orgLogo.png"
 import "./signup.css"
 import {db} from "../../firebase"
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
@@ -74,7 +74,7 @@ export default function SignUp({setSignUp,User,setUserDetails}){
     return (
         <div className="signup-container">
             <div className="signup-container_top">
-                <img alt="" src={logo} />
+                <img alt="" src={orgLogo} />
                 <h3>#TEAM
                     <span style={{color:"red"}}>A</span>
                     <span style={{color:"blue"}}>R</span>
