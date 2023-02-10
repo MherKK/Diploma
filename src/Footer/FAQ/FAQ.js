@@ -1,5 +1,5 @@
 import "./FAQ.css"
-import close from "./close.png"
+import close from "../../Assets/close.png"
 export default function FAQ({setOPen,root}){
     return (
         <div className="faq">

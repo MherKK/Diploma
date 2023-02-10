@@ -1,5 +1,5 @@
 import "./pressinquiries.css"
-import closeBar from "./close.png"
+import closeBar from "../../Assets/close.png"
 export default function PressInquiries ({setOPen,root}) {
     return (
         <div className="contact-us">

@@ -1,4 +1,4 @@
-import logo from "./logo2.png"
+import logo from "../../Assets/orgLogo.png"
 import "./privacy.css"
 export default function Privacy(){
     return (

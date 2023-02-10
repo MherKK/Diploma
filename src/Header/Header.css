@@ -22,15 +22,13 @@
     left: 15px;
 }
 
-.header-container_middle > a {
+.header-container_middle > button {
     background-color: transparent;
     border-radius: 20px;
-    text-decoration: none;
-    border: 1px solid white;
     color: white;
-    padding-inline: 40px;
-    padding-top: 3px;
-    padding-bottom: 8px;
+    width: 200px;
+    height: 29px;
+    text-decoration: underline;
 }
 .header-container_middle > button:hover {
     background-color: rgb(238, 145, 58);

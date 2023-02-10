@@ -4,7 +4,7 @@ import { useState } from "react";
 import {  Link, useLocation } from 'react-router-dom';
 import SideBar from '../SideBarMenu/SideBarMenuButton';
 import SideBarMenu from "../SideBarMenu/SideBarMenu";
-export default function Header ({User,setSignUp,setLoginIn}){
+export default function Header ({User,setSignUp,setLogIn}){
     let location = useLocation();
     let [sideBar,setSideBar] = useState(true)
     let root2 = document.body;
@@ -39,7 +39,7 @@ export default function Header ({User,setSignUp,setLoginIn}){
             {User.userName === "" ? 
             <span style={{fontSize:'12px', marginTop:'-20px'}}>Already have an account?
             <button style={loginButtonStyle} onClick={() =>{
-                setLoginIn(true);
+                setLogIn(true);
                 root2.style.overflowY = "hidden";
             }}>LogIn</button></span> : ""}
             </div>

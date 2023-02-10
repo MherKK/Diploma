@@ -1,6 +1,6 @@
 import "./barmenu.css"
-import close from "./close.png"
-import logo from "./logo2.png"
+import close from "../Assets/close.png"
+import logo from "../Assets/orgLogo.png"
 export default function SideBarMenu ({setBar}) {
     let root2 = document.body;
     return (

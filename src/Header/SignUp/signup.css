@@ -118,3 +118,16 @@ input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button{
     -webkit-appearance: none;
 }
+.sign-up_close {
+    background-color: transparent;
+    border: none;
+    width: fit-content;
+    height: fit-content;
+   
+    top: 10px;
+    left: 430px;
+}
+
+.sign-up_close > img {
+    width: 40px;
+}

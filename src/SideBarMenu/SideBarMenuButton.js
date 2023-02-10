@@ -1,5 +1,5 @@
 
-import bar from "./side-bar.png"
+import bar from "../Assets/side-bar.png"
 import "./sidebar.css";
 export default function SideBar({setBar}){
 

@@ -1,6 +1,8 @@
 import './login.css'
+import close from '../../Assets/close.png'
 import orgLogo from '../../Assets/orgLogo.png'
-export default function Login(){
+export default function Login({setLogIn,User,setUserDetails}){
+    
     return (
         <div className='login-container'>
             <div className='login_container-handler'>
@@ -11,15 +13,30 @@ export default function Login(){
                         <span style={{color:"blue"}}>R</span>
                         <span style={{color:"orange"}}>M</span>
                     </h3>
+                    <button className='sign-up_close' onClick={() =>{
+                    setLogIn(false)
+                }}><img src={close} alt="close"/></button>
                 </div>
                 <div>
-                    <form className='login-form'>
-                        <label>Username:
-                            <input type="text" />
+                    <form onSubmit = {(e) =>{
+                        e.preventDefault();
+                        if(User.userName === "" || User.password === ""){
+                           setLogIn(true) 
+                        }else{
+                            setLogIn(false)
+                        }
+                    }}className='login-form'>
+                        <label>
+                            <input value={User.userName} onChange={(e)=>{
+                                setUserDetails({...User,userName: e.target.value})
+                            }} type="text" placeholder='Username'/>
                         </label>
-                        <label>Password:
-                            <input type="password" />
+                        <label>
+                            <input value={User.password} onChange={(e) =>{
+                                setUserDetails({...User,password:e.target.value})
+                            }} type="password" placeholder='Password'/>
                         </label>
+                        <button>Log In</button>
                     </form>
                 </div>
             </div>

@@ -23,15 +23,16 @@ let user ={
 }
 let [userDetails,setUserDetails] = useState(user);
 let [signup, setSignUp] = useState(true);
-let [login,setLoginIn] = useState(false);
+let [login,setLogIn] = useState(false);
   return (
     <div className="App" >
          {signup === true ? 
-          <Header setSignUp={setSignUp} User={userDetails} setLoginIn={setLoginIn} /> :
+          <Header setSignUp={setSignUp} User={userDetails} setLogIn={setLogIn} /> :
           <SignUp setSignUp={setSignUp} 
           User = {userDetails} setUserDetails={setUserDetails}
           />}
-          {login === false ? <p>Hey</p> : <Login setLoginIn={setLoginIn}/>}       
+          {login === false ? "" : <Login setLogIn={setLogIn}  
+          User = {userDetails} setUserDetails={setUserDetails} />}       
           <Routes>
               <Route path='/' element={userDetails.userName === "" ? <FirstPage /> : <SecondPage />}/>                   
               <Route path='terms' element={<Terms />}/>

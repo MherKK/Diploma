@@ -1,3 +1,4 @@
+import close from '../../Assets/close.png'
 import validator from "validator";
 import { useState } from "react";
 import Footer from "../../Footer/Footer"
@@ -74,12 +75,16 @@ export default function SignUp({setSignUp,User,setUserDetails}){
     return (
         <div className="signup-container">
             <div className="signup-container_top">
+            
                 <img alt="" src={orgLogo} />
                 <h3>#TEAM
                     <span style={{color:"red"}}>A</span>
                     <span style={{color:"blue"}}>R</span>
                     <span style={{color:"orange"}}>M</span>
                 </h3>
+                <button className='sign-up_close' onClick={() =>{
+                    setSignUp(true)
+                }}><img src={close} alt="close"/></button>
             </div>
             <div className="signup-container-bigmiddle">
                 <div className="signup-container_bottom">

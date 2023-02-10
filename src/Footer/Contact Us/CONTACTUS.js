@@ -1,5 +1,5 @@
 import "./contactus.css"
-import closeBar from "./close.png"
+import closeBar from "../../Assets/close.png"
 export default function ContactUs ({setOPen,root}) {
     return (
         <div className="contact-us">
