@@ -1,7 +1,15 @@
 import './login.css'
 import close from '../../Assets/close.png'
 import orgLogo from '../../Assets/orgLogo.png'
-export default function Login({setLogIn,User,setUserDetails}){
+import { useState } from 'react';
+
+
+
+
+export default function Login({setLogIn,AllValue,setLoggedUserName}){
+    let root2 = document.body;
+    let [userName,setUserName] = useState("");
+    let [password,setPassword] = useState("");
     
     return (
         <div className='login-container'>
@@ -15,25 +23,33 @@ export default function Login({setLogIn,User,setUserDetails}){
                     </h3>
                     <button className='sign-up_close' onClick={() =>{
                     setLogIn(false)
+                    root2.style.overflowY= "visible";
                 }}><img src={close} alt="close"/></button>
                 </div>
                 <div>
+                  
                     <form onSubmit = {(e) =>{
                         e.preventDefault();
-                        if(User.userName === "" || User.password === ""){
+                        if(userName === "" || password === ""){
                            setLogIn(true) 
                         }else{
                             setLogIn(false)
+                            root2.style.overflowY= "visible"; 
+                        }
+                        if(AllValue[0].Username === userName){
+                            setLoggedUserName(userName);
+                        }else{
+                            setLoggedUserName("Wrong Noob")
                         }
                     }}className='login-form'>
                         <label>
-                            <input value={User.userName} onChange={(e)=>{
-                                setUserDetails({...User,userName: e.target.value})
-                            }} type="text" placeholder='Username'/>
+                            <input value={userName} onChange={(e)=>{
+                               setUserName(e.target.value)
+                            }} type="text" placeholder={AllValue[0].Username}/>
                         </label>
                         <label>
-                            <input value={User.password} onChange={(e) =>{
-                                setUserDetails({...User,password:e.target.value})
+                            <input value={password} onChange={(e) =>{
+                               setPassword(e.target.value)
                             }} type="password" placeholder='Password'/>
                         </label>
                         <button>Log In</button>

@@ -4,8 +4,8 @@ import { useState } from "react";
 import Footer from "../../Footer/Footer"
 import orgLogo from "../../Assets/orgLogo.png"
 import "./signup.css"
-import {db} from "../../firebase"
-import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import {dataRef} from "../../firebase"
+import { serverTimestamp } from "firebase/firestore";
 export default function SignUp({setSignUp,User,setUserDetails}){
   
     let root2 = document.body;
@@ -32,7 +32,7 @@ export default function SignUp({setSignUp,User,setUserDetails}){
     }
 
     if(User.userName && User.password && User.email && User.phoneNumber){
-        await addDoc(collection(db,"User"),{
+        dataRef.ref().child("User").push({
             Username: User.userName,
             Password: User.password,
             Email: User.email,
@@ -84,6 +84,7 @@ export default function SignUp({setSignUp,User,setUserDetails}){
                 </h3>
                 <button className='sign-up_close' onClick={() =>{
                     setSignUp(true)
+                    root2.style.overflowY= "visible";
                 }}><img src={close} alt="close"/></button>
             </div>
             <div className="signup-container-bigmiddle">
