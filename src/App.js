@@ -17,13 +17,7 @@ import { dataRef } from './firebase';
 
 function App() {
 
-let user ={
-  userName:"",
-  password:"",
-  email:"",
-  phoneNumber:""
-}
-let [userDetails,setUserDetails] = useState(user);
+
 let [signup, setSignUp] = useState(true);
 let [login,setLogIn] = useState(false);
 let [allValue,setAllValue] = useState([]);
@@ -36,16 +30,16 @@ useEffect(() =>{
 },[])
   return (
     <div className="App" >
-        {loggedUserName}
+        
          {signup === true ? 
-          <Header setSignUp={setSignUp} User={userDetails} setLogIn={setLogIn} /> :
+          <Header setSignUp={setSignUp} User={loggedUserName} setLogIn={setLogIn} /> :
           <SignUp setSignUp={setSignUp} 
-          User = {userDetails} setUserDetails={setUserDetails}
+          setLoggedUserName={setLoggedUserName} AllValue = {allValue}
           />}
           {login === false ? "" : <Login setLoggedUserName={setLoggedUserName} setLogIn={setLogIn} AllValue = {allValue}  
            />}       
           <Routes>
-              <Route path='/' element={userDetails.userName === "" ? <FirstPage /> : <SecondPage />}/>                   
+              <Route path='/' element={loggedUserName === "" ? <FirstPage /> : <SecondPage />}/>                   
               <Route path='terms' element={<Terms />}/>
               <Route path="privacy" element={<Privacy />}/>            
           </Routes>

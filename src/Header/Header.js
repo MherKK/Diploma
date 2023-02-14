@@ -23,7 +23,7 @@ export default function Header ({User,setSignUp,setLogIn}){
 
             <div className="header-middle_container">
             { location.pathname === "/terms" || location.pathname ==="/privacy" ? " " :
-            User.userName === "" ? 
+            User === "" ? 
             <div id="header-middle" className="header-container_middle">
                 <p>Clean up with #Teamarm and track our progress</p>
                 <button onClick={() =>{
@@ -33,10 +33,10 @@ export default function Header ({User,setSignUp,setLogIn}){
             </div> :
             <div>
             <p>Clean up with #Teamarm and track our progress</p>
-            <div>Welcome {User.userName}</div>
+            <div>Welcome {User}</div>
             </div>
             }
-            {User.userName === "" ? 
+            {User === "" ? 
             <span style={{fontSize:'12px', marginTop:'-20px'}}>Already have an account?
             <button style={loginButtonStyle} onClick={() =>{
                 setLogIn(true);

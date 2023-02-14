@@ -10,7 +10,7 @@ export default function Login({setLogIn,AllValue,setLoggedUserName}){
     let root2 = document.body;
     let [userName,setUserName] = useState("");
     let [password,setPassword] = useState("");
-    
+    let [invalidUser,setInvallidUser] = useState(false)
     return (
         <div className='login-container'>
             <div className='login_container-handler'>
@@ -32,20 +32,23 @@ export default function Login({setLogIn,AllValue,setLoggedUserName}){
                         e.preventDefault();
                         if(userName === "" || password === ""){
                            setLogIn(true) 
-                        }else{
-                            setLogIn(false)
-                            root2.style.overflowY= "visible"; 
+                           
                         }
-                        if(AllValue[0].Username === userName){
-                            setLoggedUserName(userName);
-                        }else{
-                            setLoggedUserName("Wrong Noob")
-                        }
+                        AllValue.map(value => {
+                            if(value.Username === userName && value.Password === password){
+                                setLoggedUserName(userName)
+                                setLogIn(false)
+                                return root2.style.overflowY= "visible"; 
+                            }else{
+                                return setInvallidUser(true)
+                            }
+                        })
                     }}className='login-form'>
+                        {invalidUser === false ? "" : <h4 style={{color:"red",marginLeft:'-132px',marginBottom:'-15px'}}>Incorrect Username/Password</h4>}
                         <label>
                             <input value={userName} onChange={(e)=>{
                                setUserName(e.target.value)
-                            }} type="text" placeholder={AllValue[0].Username}/>
+                            }} type="text" placeholder="Username"/>
                         </label>
                         <label>
                             <input value={password} onChange={(e) =>{
