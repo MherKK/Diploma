@@ -1,4 +1,4 @@
-import Main from "./Main";
+import Main from "./main/Main";
 
 export default function FirstPage () {
     return (

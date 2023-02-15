@@ -1,0 +1,156 @@
+.main-top-p {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.pound-amount {
+    font-size: 40px;
+    line-height: 0px;
+}
+
+@media (min-width: 1000px) {
+    .pound-amount {
+        font-size: 80px;
+        margin-top: 60px;
+        line-height: 0px;
+    }
+    .main-top-p {
+        font-size: 30px;
+    }
+}
+
+.donate-menu, .donate-details {
+    background-color: white;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.donate-menu-top {
+    background-color: rgb(201, 201, 201);
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    width: 100%;
+    font-size: 20px;
+    height: 50px;
+    line-height: 0%;
+
+}
+
+.donate-menu-quote {
+    width: 300px;
+    font-size: 22px;
+    color:  rgb(126, 126, 126);
+}
+
+.donate-menu-form-div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 130px;
+    height: 80px;
+    background-color:rgb(233, 233, 233);
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.donate-menu-form-div:hover {
+    background-color: rgb(101, 197, 229)
+}
+
+.donate-menu-form {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+#donate-menu-other-amount > input {
+    width: 270px;
+    height: 75px;
+    border-radius: 7px;
+    border: 1px solid black;
+    font-size: 20px;
+    padding-left: 5px;
+}
+
+.donate-menu-next {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: rgb(221, 111, 8);
+}
+
+.donate-menu-next:hover {
+    background-color: rgb(249, 153, 63);
+}
+
+.donate-details-formcontainer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.donate-details-formdiv {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.donate-details-formdiv > input {
+    width: 380px;
+    height: 40px;
+    border-radius: 8px;
+    border: 1px solid black;
+    margin-top: 5px;
+}
+
+.donate-details-p {
+    font-size: 25px;
+    background-color: rgb(233, 233, 233);
+    width: 100%;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    margin-bottom: 40px;
+}
+
+.donate-details-formdiv > textarea {
+    width: 360px;
+    height: 100px;
+    padding-left: 20px;
+    padding-top: 20px;
+    border-radius: 8px;
+    border: 1px solid black;
+    font-size: 15px;
+    color: rgb(122, 122, 122);
+}
+
+.donate-details-bottom {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 50px;
+}
+
+.donate-details-bottom > button:nth-of-type(2) {
+    background-color: rgb(221, 111, 8);
+}
+
+.donate-details-bottom > button:nth-of-type(2):hover {
+    color: rgb(221, 111, 8);
+    background-color: white;
+    border: 1px solid rgb(221, 111, 8);
+}
+
+.donate-details-bottom > button:nth-of-type(1) {
+    color: rgb(221, 111, 8);
+    background-color: white;
+    border: 1px solid rgb(221, 111, 8);
+}
+
+.donate-details-bottom > button:nth-of-type(1):hover {
+    background-color: rgb(221, 111, 8);
+    color: white;
+}
