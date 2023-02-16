@@ -18,7 +18,7 @@
 }
 
 .donate-menu-top {
-    background-color: rgb(201, 201, 201);
+    background-color: rgb(233, 233, 233);
     border-top-right-radius: 20px;
     border-top-left-radius: 20px;
     width: 100%;
@@ -40,8 +40,8 @@
     justify-content: center;
     width: 130px;
     height: 80px;
-    background-color:rgb(233, 233, 233);
     border-radius: 7px;
+    border: 1px solid silver;
     cursor: pointer;
 }
 
@@ -57,12 +57,13 @@
 }
 
 #donate-menu-other-amount > input {
-    width: 270px;
+    width: 250px;
     height: 75px;
     border-radius: 7px;
     border: 1px solid silver;
     font-size: 20px;
     padding-left: 5px;
+    padding-left: 20px;
 }
 
 .donate-menu-next {
@@ -89,20 +90,26 @@
 }
 
 .donate-details-formdiv > input {
-    width: 380px;
+    width: 360px;
     height: 40px;
+    letter-spacing: 1px;
+    font-style: oblique;
     border-radius: 8px;
     border: 1px solid black;
+    padding-left: 20px;
     margin-top: 5px;
+    color: rgb(122, 122, 122);
 }
 
 .donate-details-p {
-    font-size: 25px;
+    font-size: 20px;
     background-color: rgb(233, 233, 233);
     width: 100%;
     border-top-right-radius: 20px;
     border-top-left-radius: 20px;
     margin-bottom: 40px;
+    height: 50px;
+    line-height: 0%;
 }
 
 .donate-details-formdiv > textarea {
@@ -110,6 +117,8 @@
     height: 100px;
     padding-left: 20px;
     padding-top: 20px;
+    letter-spacing: 1px;
+    font-style: oblique;
     border-radius: 8px;
     border: 1px solid black;
     font-size: 15px;
@@ -168,13 +177,57 @@
 
 }
 
-.credit-card {
-    width: 360px;
-    height: 400px;
-    margin: 60px auto 0;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    background-color: #fff;
-    box-shadow: 1px 2px 3px 0 rgba(0,0,0,.10);
+.card-details {
+    width: 350px;
+    height: 35px;
+    border-radius: 8px;
+    border: 1px solid silver;
+    margin-bottom: 35px;
+    padding-left: 20px;
 }
 
+
+.card-details-mmcvv {
+    width: 100px;
+    height: 35px;
+    border-radius: 8px;
+    border: 1px solid silver;
+    text-align: center;
+    margin-right: 10px;
+}
+
+.payment-details-button {
+   
+    margin-bottom: 40px;
+  
+    border-radius: 8px;
+}
+
+.pb1 {
+    color: white;
+    background-color: rgb(221, 111, 8);
+}
+
+.pb1:hover {
+    background-color: white;
+    color: rgb(221, 111, 8);
+    border: 1px solid rgb(221, 111, 8);
+}
+
+.pb2 {
+    background-color: white;
+    color: rgb(221, 111, 8);
+    border: 1px solid rgb(221, 111, 8);
+}
+
+.pb2:hover {
+    color: white;
+    background-color: rgb(221, 111, 8);
+}
+
+.donate-payment-details-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+}
