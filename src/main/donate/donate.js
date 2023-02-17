@@ -15,17 +15,20 @@ export default function Donate(){
 
     let [donatorCardInfo,setDonatorCardInfo] = useState({
         cardHolderName:"",
-        cardNumber: 43210,
-        cardExpiryDAte:"",
+        cardNumber: "",
+        cardExpiryDate:"",
         cardCVC:""
     })
-    console.log(donatorCardInfo);
+
     return(
         <div style={{padding:"20px"}}>
             {donationView === "donateMenu" ? 
              <DonateMenu setDonator={setDonator} donator={donator} setDonationView={setDonationView}/> : donationView === "donateDetails" ? 
              <DonateDetails setDonationView={setDonationView} setDonator={setDonator} donator={donator}/> : 
-             <DonatePaymentDetails setDonationView={setDonationView} setDonatorCardInfo={setDonatorCardInfo} donatorCardInfo={donatorCardInfo}/>}
+             <DonatePaymentDetails setDonationView={setDonationView} 
+                setDonatorCardInfo={setDonatorCardInfo} donatorCardInfo={donatorCardInfo}
+                donator={donator}
+             />}
         </div>
     )
 }

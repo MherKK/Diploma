@@ -60,7 +60,7 @@ export default function SignUp({setSignUp,setLoggedUserName,AllValue}){
                 seterrorPassword("true")
                 
             }else{
-                seterrorPassword("Is Not Strong Password")
+                seterrorPassword("Password must include one capital letter and min 8 letters")
             }
            }
        }

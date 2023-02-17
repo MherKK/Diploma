@@ -1,11 +1,11 @@
 
-import { useState } from 'react';
 import { useCreditCardValidator, images } from 'react-creditcard-validator';
+import { dataRef } from '../../firebase';
 
 
-export default function DonatePaymentDetails({setDonationView,donatorCardInfo,setDonatorCardInfo}){
+export default function DonatePaymentDetails({setDonationView,donatorCardInfo,setDonatorCardInfo,donator}){
 
-    let [s,setS] = useState("");
+    let todaysDate = new Date().toLocaleDateString()+","+ new Date().toLocaleTimeString();
 
     function donateBack(e){
         e.preventDefault();
@@ -21,6 +21,14 @@ export default function DonatePaymentDetails({setDonationView,donatorCardInfo,se
             
         }else{
             setDonationView("donateMenu")
+            dataRef.ref().child("Donators").push({
+                displayName:donator.displayName,
+                kg:donator.kg,
+                email:donator.email,
+                message:donator.message,
+                phoneNumber:donator.phoneNumber || " ",
+                todaysDate:todaysDate
+            })
         }
     }
     const {
@@ -43,17 +51,17 @@ export default function DonatePaymentDetails({setDonationView,donatorCardInfo,se
                     }} value={donatorCardInfo.cardHolderName} placeholder="Card Holder Name" className="card-details" type="text" />
                 </div>
                 <div>
-                    <input  className="card-details" {...getCardNumberProps()} /><svg  {...getCardImageProps({ images })} />
+                    <input  className="card-details" {...getCardNumberProps({onChange:(e) => setDonatorCardInfo({...donatorCardInfo,cardNumber:e.target.value}), value:(donatorCardInfo.cardNumber)})} /><svg  {...getCardImageProps({ images })} />
                     <p style={{lineHeight:"0%",textAlign:"left",marginTop:"-20px",marginLeft:"10px",color:"red"}}>{erroredInputs.cardNumber && erroredInputs.cardNumber}</p>
                 </div>
                <div style={{display:"flex"}}>
                     <div>
                         <input onChange={(e) =>{
                         setDonatorCardInfo({...donatorCardInfo,cardExpiryDate:e.target.value})
-                    }} value={donatorCardInfo.expiryDate} className="card-details-mmcvv" {...getExpiryDateProps()} />
+                    }} value={donatorCardInfo.expiryDate} className="card-details-mmcvv" {...getExpiryDateProps({onChange:(e) => setDonatorCardInfo({...donatorCardInfo,cardExpiryDate:e.target.value}), value:(donatorCardInfo.cardExpiryDate)})} />
                     </div>
                     <div>
-                        <input className="card-details-mmcvv" {...getCVCProps()} />
+                        <input className="card-details-mmcvv" {...getCVCProps({onChange:(e) => setDonatorCardInfo({...donatorCardInfo,cardCVC:e.target.value}), value:(donatorCardInfo.cardCVC)})} />
                     </div> 
                     <button onClick={donateComplete} className="payment-details-button pb1">Complete</button>
                </div>

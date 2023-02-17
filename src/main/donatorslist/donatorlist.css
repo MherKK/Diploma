@@ -1,0 +1,71 @@
+.donators-list-container {
+    text-align: left;
+    background-color: white;
+    padding: 20px;
+    width: 420px;
+    border-radius: 15px;
+}
+
+.donators-list-filter {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    border: 1px solid silver;
+    border-radius: 20px;
+    background-color: rgb(189, 235, 250);;
+}
+
+.donators-list-filter > button {
+    background-color: transparent;
+    color: black;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.donators-list-filter > button:hover {
+    color:rgb(33, 147, 185);
+}
+
+.donatorslist-donators {
+    display: flex;
+    justify-content: space-between;
+    border-bottom : 1px solid silver;
+}
+
+.donatorslist-donators-top > h4 {
+    color: rgb(33, 147, 185);
+}
+
+.donatorslist-donators-top > p {
+    font-size: 13px;
+    margin-top: -10px;
+    color: rgb(60, 58, 58);
+    width: 270px;
+}
+
+.donatorslist-donators-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.donatorslist-donators-bottom > h4 {
+    background-color: rgb(33, 147, 185);
+    color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.donatorslist-donators-bottom > p {
+    font-size: 10px;
+    line-height: 0px;
+}
+
+@media (min-width: 1000px) {
+    .donators-list-container {
+        width: 570px;
+    }
+}
