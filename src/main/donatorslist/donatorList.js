@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { dataRef } from "../../firebase";
 import "./donatorlist.css"
 export default function DonatorsList(){
-
+    const imagePerRow = 4;
     let [donationDetails,setDonationDetails] = useState([]);
     let [filter,setFilter] = useState(true);
     useEffect(() =>{
@@ -12,6 +12,10 @@ export default function DonatorsList(){
         })
     },[])
 
+    const [next, setNext] = useState(imagePerRow);
+    const handleMoreImage = () => {
+        setNext(next + imagePerRow);
+      };
     let finalDetails = filter === true ? donationDetails.sort((a,b) => new Date(b.todaysDate) - new Date(a.todaysDate)) : donationDetails.sort((a,b) => b.kg - a.kg); 
     return (
         <div className="donators-list-container">
@@ -23,7 +27,7 @@ export default function DonatorsList(){
                     setFilter(false)
             }}>MOST TRASH</button>
             </div>
-            {finalDetails.map(value => {
+            {finalDetails?.slice(0,next).map(value => {
                 return (
                     <div className="donatorslist-donators">
                         <div className="donatorslist-donators-top">
@@ -37,6 +41,16 @@ export default function DonatorsList(){
                     </div>
                 )
             })}
+            {
+                next < finalDetails?.length && (
+                    <button
+                      className="mt-4"
+                      onClick={handleMoreImage}
+                    >
+                      Load more
+                    </button>
+                  )
+            }
         </div>
     )
 }
