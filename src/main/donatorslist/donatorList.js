@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { dataRef } from "../../firebase";
 import "./donatorlist.css"
 export default function DonatorsList(){
-    const imagePerRow = 4;
+    const imagePerRow = 2;
     let [donationDetails,setDonationDetails] = useState([]);
     let [filter,setFilter] = useState(true);
     useEffect(() =>{
@@ -11,14 +12,9 @@ export default function DonatorsList(){
                 setDonationDetails(getData)
         })
     },[])
-
-    const [next, setNext] = useState(imagePerRow);
-    const handleMoreImage = () => {
-        setNext(next + imagePerRow);
-      };
     let finalDetails = filter === true ? donationDetails.sort((a,b) => new Date(b.todaysDate) - new Date(a.todaysDate)) : donationDetails.sort((a,b) => b.kg - a.kg); 
     return (
-        <div className="donators-list-container">
+        <div  className="donators-list-container">
             <div className="donators-list-filter">
                 <button onClick={() =>{
                     setFilter(true)
@@ -27,30 +23,32 @@ export default function DonatorsList(){
                     setFilter(false)
             }}>MOST TRASH</button>
             </div>
-            {finalDetails?.slice(0,next).map(value => {
+            {finalDetails?.slice(0,imagePerRow).map(value => {
                 return (
                     <div className="donatorslist-donators">
                         <div className="donatorslist-donators-top">
                             <h4>{value.displayName}</h4>
                             <p>{value.message}</p>
                         </div>
-                        <div  className="donatorslist-donators-bottom">
+                        <div className="donatorslist-donators-bottom">
                             <h4>{value.kg} KGS</h4>
                             <p>{value.todaysDate}</p>
                         </div>
                     </div>
                 )
             })}
+            <div className="showmore-less-donators">
             {
-                next < finalDetails?.length && (
-                    <button
-                      className="mt-4"
-                      onClick={handleMoreImage}
+                imagePerRow < finalDetails?.length && (
+                    <Link
+                      className="donatorlist-Link"
+                      target="_blank" to="donatorfulllist"
                     >
                       Load more
-                    </button>
+                    </Link>
                   )
             }
+            </div>
         </div>
     )
 }

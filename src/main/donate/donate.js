@@ -3,7 +3,7 @@ import DonateDetails from "./donatedetails";
 import DonateMenu from "./donatemenu";
 import DonatePaymentDetails from "./donatepaymentdetails";
 
-export default function Donate(){
+export default function Donate({donationRef}){
     let [donationView, setDonationView] = useState("donateMenu");
     let [donator,setDonator] = useState({
             kg: "",
@@ -12,16 +12,14 @@ export default function Donate(){
             mobileNumber: "",
             message:"" 
     })
-
     let [donatorCardInfo,setDonatorCardInfo] = useState({
         cardHolderName:"",
         cardNumber: "",
         cardExpiryDate:"",
         cardCVC:""
     })
-
     return(
-        <div style={{padding:"20px"}}>
+        <div ref={donationRef} style={{padding:"20px"}}>
             {donationView === "donateMenu" ? 
              <DonateMenu setDonator={setDonator} donator={donator} setDonationView={setDonationView}/> : donationView === "donateDetails" ? 
              <DonateDetails setDonationView={setDonationView} setDonator={setDonator} donator={donator}/> : 

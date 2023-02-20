@@ -4,7 +4,7 @@ import { useState } from "react";
 import {  Link, useLocation } from 'react-router-dom';
 import SideBar from '../SideBarMenu/SideBarMenuButton';
 import SideBarMenu from "../SideBarMenu/SideBarMenu";
-export default function Header ({User,setSignUp,setLogIn}){
+export default function Header ({User,setSignUp,setLogIn,donationHeight,leaderBoardHeight}){
     let location = useLocation();
     let [sideBar,setSideBar] = useState(true)
     let root2 = document.body;
@@ -44,7 +44,7 @@ export default function Header ({User,setSignUp,setLogIn}){
             }}>LogIn</button></span> : ""}
             </div>
             
-            {sideBar === true ? <SideBar setBar={setSideBar}/> : <SideBarMenu setBar={setSideBar}/> }
+            {sideBar === true ? <SideBar setBar={setSideBar}/> : <SideBarMenu donationHeight={donationHeight} leaderBoardHeight={leaderBoardHeight} setBar={setSideBar}/> }
              
         </div>
     )
