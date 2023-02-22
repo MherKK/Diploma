@@ -25,7 +25,7 @@ export default function DonatorsList(){
             </div>
             {finalDetails?.slice(0,imagePerRow).map(value => {
                 return (
-                    <div className="donatorslist-donators">
+                    <div key={value.displayName} className="donatorslist-donators">
                         <div className="donatorslist-donators-top">
                             <h4>{value.displayName}</h4>
                             <p>{value.message}</p>
