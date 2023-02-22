@@ -1,0 +1,117 @@
+.howitworks-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    width: 500px;
+}
+
+.howitworks_top > p:nth-of-type(1) {
+    font-size: 40px;
+    font-weight:800;
+    color: white;
+}
+
+.howitworks_top > p:nth-of-type(2) {
+    color: white;
+    font-size: 20px;
+}
+
+.howitworks_buttons > button {
+    border: none;
+    background-color: transparent;
+    color: black;
+    letter-spacing: 2px;
+}
+
+.howitworks_buttons > button:nth-of-type(2),.howitworks_buttons >  button:nth-of-type(1)  {
+    border-right: 1px solid silver;
+    border-radius: 0%;
+}
+
+.howitworks_buttons > button:hover {
+    color: white;
+}
+
+.howitworks_buttons {
+    border: 1px solid silver;
+    border-radius: 20px;
+    padding: 5px;
+    background-color: rgb(189, 235, 250);
+}
+
+.river-container {
+    width: 500px;
+    border-left: 1px solid white;
+    padding-left: 20px;
+}
+
+.thebigidea {
+    display: flex;
+    gap: 40px;
+    
+}
+
+.howitworks-line {
+    position: relative;
+    height: 100%;
+    width: 15px;
+    background-color: white;
+}
+
+.thebigidea > div {
+    text-align: left;
+}
+
+.thebigidea > div > p {
+    font-size: 25px;
+    font-weight: bolder;
+    color: yellow;
+}
+
+
+
+.thebigidea > div > div {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    font-size: 20px;
+    text-align: left;
+    line-height: 32px;
+    color: rgb(38, 122, 150);
+}
+
+.thebigidea > img {
+    display: none;
+}
+
+.river-container > img {
+    width: 400px;
+    height: 300px;
+    margin-bottom: 20px;
+}
+
+.river-container > h1 {
+    font-size: 40px;
+    letter-spacing: 3px;
+}
+
+@media (min-width: 1300px) {
+    .thebigidea > img {
+        display: block;
+        width: 200px;
+        height: 200px;
+        margin-top: 40px;
+    }
+
+    .river-container {
+        width: 1000px;
+        border: none;
+    }
+    .howitworks-container {
+        width: 1300px;
+        color: lightblue;
+    }
+}
+

@@ -33,7 +33,6 @@ useEffect(() =>{
 },[])
   return (
     <div className="App" >
-        
          {signup === true ? 
           <Header setSignUp={setSignUp} User={loggedUserName} 
           setLogIn={setLogIn} donationHeight={donationHeight}

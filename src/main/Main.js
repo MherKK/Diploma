@@ -2,6 +2,7 @@ import Topmain from "./topmain";
 import "./main.css"
 import Donate from "./donate/donate";
 import DonatorsList from "./donatorslist/donatorList";
+import HowItWorks from "./howitworks/howitworks";
 
 export default function Main ({donationRef}){
     return (
@@ -9,6 +10,7 @@ export default function Main ({donationRef}){
             <Topmain />
             <Donate donationRef={donationRef} />
             <DonatorsList />
+            <HowItWorks />
         </div>
     )
 }
