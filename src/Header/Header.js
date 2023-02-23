@@ -30,18 +30,17 @@ export default function Header ({User,setSignUp,setLogIn,donationHeight,leaderBo
                     setSignUp(false)
                     root2.style.overflowY = "hidden";
                 }}>Sign Up</button>
+                 <div style={{fontSize:'12px', marginTop:'-20px'}}>Already have an account?
+                    <button style={loginButtonStyle} onClick={() =>{
+                        setLogIn(true);
+                        root2.style.overflowY = "hidden";
+                    }}>LogIn</button></div>
             </div> :
             <div>
             <p>Clean up with #Teamarm and track our progress</p>
             <div>Welcome {User}</div>
             </div>
             }
-            {User === "" ? 
-            <span style={{fontSize:'12px', marginTop:'-20px'}}>Already have an account?
-            <button style={loginButtonStyle} onClick={() =>{
-                setLogIn(true);
-                root2.style.overflowY = "hidden";
-            }}>LogIn</button></span> : ""}
             </div>
             
             {sideBar === true ? <SideBar setBar={setSideBar}/> : <SideBarMenu donationHeight={donationHeight} leaderBoardHeight={leaderBoardHeight} setBar={setSideBar}/> }

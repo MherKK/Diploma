@@ -10,6 +10,7 @@ export default function ContactUs ({setOPen,root}) {
         subject:"",
         message:""
     })
+    let [display,setDisplay] = useState("none");
 
     function sendEmail(e) {
         e.preventDefault();
@@ -29,13 +30,15 @@ export default function ContactUs ({setOPen,root}) {
                     console.log(error.text);
                 }
             )
-            setContactDetails({ name:"",
+            setContactDetails({ 
+            name:"",
             email:"",
             subject:"",
             message:""})
+            setDisplay("none")
        }else{
-        console.log("fill the form betch");
-       }
+        setDisplay("block")
+        }
     }
     return (
         <div className="contact-us">
@@ -71,11 +74,11 @@ export default function ContactUs ({setOPen,root}) {
                         <textarea value={contactDetails.message} onChange={(e) => {
                             setContactDetails({...contactDetails,message:e.target.value})
                         }} name="message" className="textarea"></textarea>
+                        <div className="required">* indicates a required field</div>
                     </div>
-                    <div className="required">* indicates a required field</div>
-                    <button type="submit" value="Send">SUBMIT</button>
+                    <button type="submit" value="Send">SUBMIT</button>           
                 </form>
-                
+                <p style={{color:"red",display:display}}>Please fill all the required fields</p>
             </div>
             
         </div>

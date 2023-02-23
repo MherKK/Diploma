@@ -66,9 +66,9 @@
     color: dodgerblue;
 }
 
-button {
-    width: 140px;
-    height: 40px;
+.contact-us_form  > button {
+    width: 170px;
+    height: 35px;
     border-radius: 15px;
     border: none;
     font-size: 16px;
@@ -91,7 +91,8 @@ button {
     .contact-us_form {
         display: flex;
         gap: 15px;
-        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
     }
     
 }
