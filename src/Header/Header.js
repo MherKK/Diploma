@@ -26,10 +26,11 @@ export default function Header ({User,setSignUp,setLogIn,donationHeight,leaderBo
             User === "" ? 
             <div id="header-middle" className="header-container_middle">
                 <p>Clean up with #Teamarm and track our progress</p>
-                <button onClick={() =>{
+                <button style={{marginBottom:"20px"}} onClick={() =>{
                     setSignUp(false)
                     root2.style.overflowY = "hidden";
                 }}>Sign Up</button>
+                
                  <div style={{fontSize:'12px', marginTop:'-20px'}}>Already have an account?
                     <button style={loginButtonStyle} onClick={() =>{
                         setLogIn(true);

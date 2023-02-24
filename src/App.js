@@ -13,10 +13,7 @@ import { useEffect } from 'react';
 import { dataRef } from './firebase';
 import DonatorFullList from './main/donatorslist/donatorfulllist';
 
-
-
 function App() {
-
 
 let [signup, setSignUp] = useState(true);
 let [login,setLogIn] = useState(false);

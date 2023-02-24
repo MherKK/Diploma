@@ -3,6 +3,8 @@
     font-weight: 500;
 }
 
+
+
 .pound-amount {
     font-size: 40px;
     line-height: 0px;
@@ -81,16 +83,18 @@
     flex-direction: column;
     gap: 20px;
     align-items: flex-start;
+    width: 90%;
 }
 
 .donate-details-formdiv {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    width: 100%;
 }
 
 .donate-details-formdiv > input {
-    width: 360px;
+    width: 90%;
     height: 40px;
     letter-spacing: 1px;
     font-style: oblique;
@@ -113,7 +117,7 @@
 }
 
 .donate-details-formdiv > textarea {
-    width: 360px;
+    width: 90%;
     height: 100px;
     padding-left: 20px;
     padding-top: 20px;

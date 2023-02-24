@@ -11,3 +11,14 @@
   background-color: rgb(41, 11, 80);
   overflow-x: hidden;
 }
+
+@media (max-width:460px) {  
+   .main-top  .donate-full-container
+   .donate-menu , 
+   .donate-details 
+   .donate-payment-details ,
+   .donate-details-formdiv , .donate-details-formcontainer{
+    width: 300px;
+  }
+ 
+}

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import DonateDetails from "./donatedetails";
 import DonateMenu from "./donatemenu";
+import "../../App.css"
 import DonatePaymentDetails from "./donatepaymentdetails";
 
 export default function Donate({donationRef}){
@@ -19,7 +20,7 @@ export default function Donate({donationRef}){
         cardCVC:""
     })
     return(
-        <div ref={donationRef} style={{padding:"20px"}}>
+        <div className="donate-full-container" ref={donationRef} style={{padding:"20px"}}>
             {donationView === "donateMenu" ? 
              <DonateMenu setDonator={setDonator} donator={donator} setDonationView={setDonationView}/> : donationView === "donateDetails" ? 
              <DonateDetails setDonationView={setDonationView} setDonator={setDonator} donator={donator}/> : 

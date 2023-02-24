@@ -1,4 +1,4 @@
-
+import "../../App.css"
 import { useState } from "react";
 import "../main.css"
 export default function DonateMenu({setDonationView,donator,setDonator}){

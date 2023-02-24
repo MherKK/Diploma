@@ -1,4 +1,5 @@
 import "./barmenu.css"
+import "../App.css"
 import close from "../Assets/close.png"
 import logo from "../Assets/orgLogo.png"
 export default function SideBarMenu ({setBar,donationHeight}) {
@@ -29,15 +30,33 @@ export default function SideBarMenu ({setBar,donationHeight}) {
                             window.scrollTo({top: 900, behavior:"smooth"})
                             setBar(true);
                         }}>Leaderboard</button>
-                        <button>How It Works</button>
+                        <button onClick={() => {
+                            root2.style.overflowY = "visible";
+                            window.scrollTo({top: 1300, behavior:"smooth"})
+                            setBar(true);
+                        }}>How It Works</button>
                     </div>
                     <div className="side-bar_containers">
-                        <button>FAQ</button>
-                        <button>Contact Us</button>
-                        <button>Press Inquiries</button>
+                        <button onClick={() => {
+                            root2.style.overflowY = "visible";
+                            window.scrollTo({top:3000 , behavior:"smooth"})
+                            setBar(true);
+                        }}>FAQ</button>
+                        <button onClick={() => {
+                            root2.style.overflowY = "visible";
+                            window.scrollTo({top: 3000, behavior:"smooth"})
+                            setBar(true);
+                        }}>Contact Us</button>
+                        <button onClick={() => {
+                            root2.style.overflowY = "visible";
+                            window.scrollTo({top: 3000, behavior:"smooth"})
+                            setBar(true);
+                        }}>Press Inquiries</button>
                     </div>
                 </div>
+                
            </div>
+           
         </div>
     )
 }

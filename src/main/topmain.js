@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import logo from "../Assets/orgLogo.png"
+import "../App.css"
 import { dataRef } from "../firebase";
 export default function Topmain(){
 

@@ -1,7 +1,7 @@
 
 import { useCreditCardValidator, images } from 'react-creditcard-validator';
 import { dataRef } from '../../firebase';
-
+import "../../App.css"
 
 export default function DonatePaymentDetails({setDonationView,donatorCardInfo,setDonatorCardInfo,donator}){
 
