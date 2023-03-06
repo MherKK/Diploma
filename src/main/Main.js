@@ -10,7 +10,7 @@ export default function Main ({donationRef}){
             <Topmain />
             <Donate donationRef={donationRef} />
             <DonatorsList />
-            <HowItWorks />
+            <HowItWorks />    
         </div>
     )
 }
