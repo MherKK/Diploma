@@ -12,6 +12,7 @@ import Login from './Header/LogIn/Login';
 import { useEffect } from 'react';
 import { dataRef } from './firebase';
 import DonatorFullList from './main/donatorslist/donatorfulllist';
+import Events from './SecondPage/Events/events';
 
 function App() {
 
@@ -43,7 +44,8 @@ useEffect(() =>{
               <Route path='/' element={loggedUserName === "" ? <FirstPage donationRef={donationRef} /> : <SecondPage donationRef={donationRef}/>} />                   
               <Route path='terms' element={<Terms />}/>
               <Route path="privacy" element={<Privacy />}/>
-              <Route path='donatorfulllist' element={<DonatorFullList />} />            
+              <Route path='donatorfulllist' element={<DonatorFullList />} />
+              <Route path='events' element={<Events />} />            
           </Routes>
           <Footer />
     </div>

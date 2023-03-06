@@ -1,24 +1,21 @@
-import Donate from "../main/donate/donate";
-import DonatorsList from "../main/donatorslist/donatorList";
-import HowItWorks from "../main/howitworks/howitworks";
-import Topmain from "../main/topmain";
-import Events from "./Events/events";
-
+import { Link } from "react-router-dom";
+import Main from "../main/Main";
+import lake from "../Assets/lake.jpg"
+import "./secondpage.css"
 export default function SecondPage({donationRef}){
     return(
-        <div style={{display:"flex",flexDirection:'column',justifyContent:'center', alignItems:'center'}}>
-         <Topmain />   <div style={{display:"flex",alignItems:"center",gap:"40px"}}>
-                <div style={{display:"flex",flexDirection:'column',justifyContent:'center',gap:"40px" , alignItems:'center'}}>
-                    
-                    <Donate donationRef={donationRef} />
-                    <DonatorsList />
+        <div style={{display:"flex",flexDirection:"column", justifyContent:"center",alignItems:"center"}}>
+            <div className="secondpage-container">
+                <div className="joinourevents">
+                    <h3>Join Our Events</h3>
+                    <p>Come participate in our events.We will meet on different places to learn about environmental initiatives and to clean up the places. Our environment needs our help - today more than ever.</p>
                 </div>
-                <div style={{border:"1px solid silver",borderRadius:"10px",backgroundColor:"white"}}>
-                    <Events />
+                <img alt="" src={lake}/>
+                <div className="joinevents-container">
+                    <Link target="_blank" to="/events">Join Now</Link>
                 </div>
             </div>
-           
-            <HowItWorks />
+            <Main />
         </div>
     )
 }

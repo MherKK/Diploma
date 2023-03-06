@@ -1,3 +1,4 @@
+import HowItWorks from "../../main/howitworks/howitworks";
 import ForestEvents from "./ForestEvents";
 
 export default function Events(){
@@ -9,6 +10,7 @@ export default function Events(){
                 <button >FORESTS</button>
             </div>
             <ForestEvents />
+            <HowItWorks />
         </div>
     )
 }

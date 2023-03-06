@@ -1,0 +1,43 @@
+.secondpage-container{
+    width: 300px;
+    border: 1px solid silver;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: rgb(194, 241, 201);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+.joinourevents {
+    text-align: left;
+}
+.joinourevents > h3 {
+    font-size: 30px;
+    color: rgb(116, 211, 116);
+    line-height: 0%;
+}
+
+.joinourevents p {
+    font-size: 12px;
+    line-height: 14px;
+    font-weight: 700;
+}
+
+.joinevents-container a {
+    text-decoration: none;
+    color: white;
+}
+
+.joinevents-container {
+    width: 150px;
+    padding: 6px;
+    background-color: rgb(116, 211, 116);
+    border-radius: 8px;
+}
+
+.secondpage-container > img {
+    width: 320px;
+    height: 230px;
+}
