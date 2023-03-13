@@ -15,11 +15,10 @@ import DonatorFullList from './main/donatorslist/donatorfulllist';
 import Events from './SecondPage/Events/events';
 
 function App() {
-
+let [savedData,setSavedData] = useState(localStorage.getItem("name") || undefined)
 let [signup, setSignUp] = useState(true);
 let [login,setLogIn] = useState(false);
 let [allValue,setAllValue] = useState([]);
-let [loggedUserName,setLoggedUserName] = useState("");
 let [donationHeight, setDonationHeight] = useState(0);
 const donationRef = useRef(null);
 useEffect(() =>{
@@ -29,19 +28,21 @@ useEffect(() =>{
         setDonationHeight(donationRef.current.clientHeight);
     })
 },[])
+console.log(savedData);
   return (
     <div className="App" >
          {signup === true ? 
-          <Header setSignUp={setSignUp} User={loggedUserName} 
+          <Header setSignUp={setSignUp} User={savedData} 
           setLogIn={setLogIn} donationHeight={donationHeight}
+          setSavedData={setSavedData}
           /> :
-          <SignUp setSignUp={setSignUp} 
-          setLoggedUserName={setLoggedUserName} AllValue = {allValue}
+          <SignUp setSignUp={setSignUp}  setSavedData={setSavedData}
+           AllValue = {allValue}
           />}
-          {login === false ? "" : <Login setLoggedUserName={setLoggedUserName} setLogIn={setLogIn} AllValue = {allValue}  
+          {login === false ? "" : <Login setSavedData={setSavedData} setLogIn={setLogIn} AllValue = {allValue}  
            />}       
           <Routes>
-              <Route path='/' element={loggedUserName === "" ? <FirstPage donationRef={donationRef} /> : <SecondPage donationRef={donationRef}/>} />                   
+              <Route path='/' element={savedData === "" ? <FirstPage donationRef={donationRef} /> : <SecondPage donationRef={donationRef}/>} />                   
               <Route path='terms' element={<Terms />}/>
               <Route path="privacy" element={<Privacy />}/>
               <Route path='donatorfulllist' element={<DonatorFullList />} />

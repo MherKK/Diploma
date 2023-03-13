@@ -6,7 +6,7 @@ import "../../App.css"
 export default function DonatePaymentDetails({setDonationView,donatorCardInfo,setDonatorCardInfo,donator}){
 
     let todaysDate = new Date().toLocaleDateString()+","+ new Date().toLocaleTimeString();
-
+    let donatorsAmount = 7;
     function donateBack(e){
         e.preventDefault();
         setDonationView("donateDetails")
@@ -27,7 +27,8 @@ export default function DonatePaymentDetails({setDonationView,donatorCardInfo,se
                 email:donator.email,
                 message:donator.message,
                 phoneNumber:donator.phoneNumber || " ",
-                todaysDate:todaysDate
+                todaysDate:todaysDate,
+                key: donatorsAmount + 1
             })
         }
     }

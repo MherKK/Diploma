@@ -35,7 +35,7 @@ export default function DonatorFullList(){
                 </div>
                 {finalDetails?.slice(0,next).map(value => {
                     return (
-                        <div className="donatorslist-donators">
+                        <div key={value.key} className="donatorslist-donators">
                             <div className="donatorslist-donators-top">
                                 <h4>{value.displayName}</h4>
                                 <p>{value.message}</p>

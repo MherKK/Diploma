@@ -4,7 +4,7 @@ import { useState } from "react";
 import {  Link, useLocation } from 'react-router-dom';
 import SideBar from '../SideBarMenu/SideBarMenuButton';
 import SideBarMenu from "../SideBarMenu/SideBarMenu";
-export default function Header ({User,setSignUp,setLogIn,donationHeight,leaderBoardHeight}){
+export default function Header ({User,setSignUp,setLogIn,donationHeight,leaderBoardHeight,setSavedData}){
     let location = useLocation();
     let [sideBar,setSideBar] = useState(true)
     let root2 = document.body;
@@ -37,9 +37,14 @@ export default function Header ({User,setSignUp,setLogIn,donationHeight,leaderBo
                         root2.style.overflowY = "hidden";
                     }}>LogIn</button></div>
             </div> :
-            <div>
-            <p>Clean up with #Teamarm and track our progress</p>
-            <div>Welcome {User}</div>
+            <div className="header-loggedIn_container">
+                <p>Clean up with #Teamarm and track our progress</p>
+                <div>
+                    <div>Welcome {User[0].toUpperCase() + User.slice(1,User.length)}</div>
+                    <Link to="/" onClick={() => {
+                        setSavedData("");
+                    }}>Logout</Link>
+                </div>
             </div>
             }
             </div>

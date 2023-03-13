@@ -1,12 +1,12 @@
 import './login.css'
 import close from '../../Assets/close.png'
 import orgLogo from '../../Assets/orgLogo.png'
-import { useState } from 'react';
+import { useState } from 'react'
 
 
 
 
-export default function Login({setLogIn,AllValue,setLoggedUserName}){
+export default function Login({setLogIn,AllValue,setSavedData}){
     let root2 = document.body;
     let [userName,setUserName] = useState("");
     let [password,setPassword] = useState("");
@@ -36,7 +36,8 @@ export default function Login({setLogIn,AllValue,setLoggedUserName}){
                         }
                         AllValue.map(value => {
                             if(value.Username === userName && value.Password === password){
-                                setLoggedUserName(userName)
+                                setSavedData(userName)
+                                localStorage.setItem("name",userName)
                                 setLogIn(false)
                                 return root2.style.overflowY= "visible"; 
                             }else{

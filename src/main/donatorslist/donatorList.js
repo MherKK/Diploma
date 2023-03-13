@@ -13,6 +13,7 @@ export default function DonatorsList(){
         })
     },[])
     let finalDetails = filter === true ? donationDetails.sort((a,b) => new Date(b.todaysDate) - new Date(a.todaysDate)) : donationDetails.sort((a,b) => b.kg - a.kg); 
+
     return (
         <div  className="donators-list-container">
             <div className="donators-list-filter">
@@ -25,7 +26,7 @@ export default function DonatorsList(){
             </div>
             {finalDetails?.slice(0,imagePerRow).map(value => {
                 return (
-                    <div key={value.displayName} className="donatorslist-donators">
+                    <div key={value.key} className="donatorslist-donators">
                         <div className="donatorslist-donators-top">
                             <h4>{value.displayName}</h4>
                             <p>{value.message}</p>

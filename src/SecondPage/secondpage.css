@@ -12,6 +12,7 @@
 }
 .joinourevents {
     text-align: left;
+    
 }
 .joinourevents > h3 {
     font-size: 30px;
@@ -37,7 +38,22 @@
     border-radius: 8px;
 }
 
-.secondpage-container > img {
-    width: 320px;
-    height: 230px;
+.joinourevents > img {
+    width: 99%;
+    height: 260px;
+}
+
+@media (min-width: 550px) {
+    .secondpage-container {
+        width: 500px;
+    }
+    .joinourevents > img {
+        width: 400px;
+        text-align: left;
+        height: 400px;
+    }
+
+    .joinourevents > p {
+        width: 400px;
+    }
 }

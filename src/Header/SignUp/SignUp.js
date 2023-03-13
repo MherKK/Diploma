@@ -6,7 +6,7 @@ import orgLogo from "../../Assets/orgLogo.png"
 import "./signup.css"
 import {dataRef} from "../../firebase"
 import { serverTimestamp } from "firebase/firestore";
-export default function SignUp({setSignUp,setLoggedUserName,AllValue}){
+export default function SignUp({setSignUp,AllValue,setSavedData}){
   
     let root2 = document.body;
     let [error,setError] = useState("none");
@@ -88,7 +88,8 @@ export default function SignUp({setSignUp,setLoggedUserName,AllValue}){
             PhoneNumber: user.phoneNumber,
             timeStamp: serverTimestamp()
         })
-        setLoggedUserName(user.userName)
+        setSavedData(user.userName)
+        localStorage.setItem("name",user.userName)
         setSignUp(true) 
     }
    }
