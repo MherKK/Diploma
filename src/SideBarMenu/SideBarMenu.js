@@ -2,7 +2,7 @@ import "./barmenu.css"
 import "../App.css"
 import close from "../Assets/close.png"
 import logo from "../Assets/orgLogo.png"
-export default function SideBarMenu ({setBar,donationHeight}) {
+export default function SideBarMenu ({setBar}) {
     let root2 = document.body;
     return (
         <div className="side-bar-container">
@@ -20,7 +20,7 @@ export default function SideBarMenu ({setBar,donationHeight}) {
                         <p>Every $1 is one less pound of trash in the environment</p>
                         <button onClick={() => {
                             root2.style.overflowY = "visible";
-                            window.scrollTo({top: donationHeight, behavior:"smooth"})
+                            window.scrollTo({top: 200, behavior:"smooth"})
                             setBar(true);
                         }}>Donate</button>
                     </div>

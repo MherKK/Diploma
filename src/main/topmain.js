@@ -5,6 +5,8 @@ import { dataRef } from "../firebase";
 export default function Topmain(){
 
     let [kgs,setKgs] = useState([]);
+
+    // getting total donations from firestore
     useEffect(() =>{
         dataRef.ref().child("Donators").on('value', data =>{
             const getData = Object.values(data.val()).map(value => value.kg);            
@@ -12,8 +14,10 @@ export default function Topmain(){
         })
     },[])
 
+    // calculating total amount of kgs 
     let totalmountOfkgsRemoved = kgs.reduce((prev,next) => prev + +next ,0);
 
+    
     return(
         <div className="main-top" style={{padding:"20px"}}>
             <img className="main-top-logo" alt="Logo" src={logo} style={{width:"70px"}} />

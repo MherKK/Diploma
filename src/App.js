@@ -15,26 +15,70 @@ import DonatorFullList from './main/donatorslist/donatorfulllist';
 import Events from './SecondPage/Events/events';
 
 function App() {
-let [savedData,setSavedData] = useState(localStorage.getItem("name") || undefined)
+let [savedData,setSavedData] = useState(localStorage.getItem("name") || "")
 let [signup, setSignUp] = useState(true);
 let [login,setLogIn] = useState(false);
 let [allValue,setAllValue] = useState([]);
-let [donationHeight, setDonationHeight] = useState(0);
 const donationRef = useRef(null);
+
+//get data from firestore
 useEffect(() =>{
     dataRef.ref().child("User").on('value', data =>{
         const getData = Object.values(data.val());
         setAllValue(getData);
-        setDonationHeight(donationRef.current.clientHeight);
     })
 },[])
-console.log(savedData);
+
+//function to check for inactivity
+const checkForInactivity = () => {
+  const expireTime = localStorage.getItem("expireTime");
+  if(expireTime < Date.now()){
+    setSavedData("");
+    localStorage.setItem("name","");
+  }
+}
+
+//function to update expire time
+const updateExpiredTime = () => {
+  const expireTime = Date.now() + 60000;
+
+  localStorage.setItem("expireTime",expireTime);
+}
+
+// use effect to set interval to check for inactivity
+useEffect(() =>{
+  const interval = setInterval(() => {
+    checkForInactivity();
+  },1000);
+
+  return () => clearInterval(interval);
+},[])
+
+//update expire time on any user
+useEffect(() =>{
+  //set Initial expire time
+  updateExpiredTime();
+
+  //set event listeners
+  window.addEventListener("click",updateExpiredTime);
+  window.addEventListener("keypress",updateExpiredTime);
+  window.addEventListener("mousemove",updateExpiredTime);
+  window.addEventListener("scroll",updateExpiredTime);
+
+  return () => {
+    window.addEventListener("click",updateExpiredTime);
+    window.addEventListener("keypress",updateExpiredTime);
+    window.addEventListener("mousemove",updateExpiredTime);
+    window.addEventListener("scroll",updateExpiredTime);
+  }
+
+},[])
+
   return (
     <div className="App" >
          {signup === true ? 
           <Header setSignUp={setSignUp} User={savedData} 
-          setLogIn={setLogIn} donationHeight={donationHeight}
-          setSavedData={setSavedData}
+          setLogIn={setLogIn} setSavedData={setSavedData}
           /> :
           <SignUp setSignUp={setSignUp}  setSavedData={setSavedData}
            AllValue = {allValue}
