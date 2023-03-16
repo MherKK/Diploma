@@ -3,7 +3,7 @@ import ForestEvents from "./ForestEvents";
 
 export default function Events(){
     return (
-        <div style={{width:"90%",display:"flex",flexDirection:"column",justifyContent:"center",alignItems:"center"}}>
+        <div className="event-container">
             <div className="events_buttons">
                 <button>RIVERS</button>
                 <button >LAKES</button>

@@ -40,7 +40,7 @@ const checkForInactivity = () => {
 
 //function to update expire time
 const updateExpiredTime = () => {
-  const expireTime = Date.now() + 60000;
+  const expireTime = Date.now() + 600000;
 
   localStorage.setItem("expireTime",expireTime);
 }
@@ -90,7 +90,7 @@ useEffect(() =>{
               <Route path='terms' element={<Terms />}/>
               <Route path="privacy" element={<Privacy />}/>
               <Route path='donatorfulllist' element={<DonatorFullList />} />
-              <Route path='events' element={<Events />} />            
+              <Route path='events' element={savedData === "" ? <FirstPage /> : <Events />} />            
           </Routes>
           <Footer />
     </div>

@@ -1,35 +1,20 @@
-.forestevents-container-top {
-    display: flex;
-    gap: 20px;
-    height: 150px;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-}
-
-.forestevents-container {
+.event-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
-    border-radius: 10px;
-    border: 1px solid silver;
+    align-items: center;
     width: 90%;
-    padding: 20px;
-    margin-bottom: 20px;
+    border-radius: 10px;
 }
 
 .events_buttons {
-    border: 1px solid silver;
     background-color: rgb(189, 235, 250);
     margin-bottom: 20px;
     width: 100%;
-    height: 60px;
+    height: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
 }
 
 .events_buttons > button {
@@ -38,9 +23,34 @@
     color: black;
     width: 35%;
     letter-spacing: 2px;
+    font-size: 14px;
 }
 
 .events_buttons > button:nth-of-type(2),.events_buttons >  button:nth-of-type(1)  {
     border-right: 1px solid silver;
     border-radius: 0%;
+}
+
+.forestevents-container-top {
+    align-items: center;
+}
+
+.forestevents-container {
+    border-radius: 10px;
+    border: 1px solid silver;
+    width: 90%;
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: white;
+}
+
+.forest-event_join-button {
+    width: 100px;
+    height: 35px;
+    border-radius: 6px;
+    background-color: rgb(95, 199, 234);
+}
+
+.forestevents-container-top > p {
+    font-weight: 500;
 }
