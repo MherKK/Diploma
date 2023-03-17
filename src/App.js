@@ -74,6 +74,8 @@ useEffect(() =>{
 
 },[])
 
+
+
   return (
     <div className="App" >
          {signup === true ? 
@@ -90,7 +92,7 @@ useEffect(() =>{
               <Route path='terms' element={<Terms />}/>
               <Route path="privacy" element={<Privacy />}/>
               <Route path='donatorfulllist' element={<DonatorFullList />} />
-              <Route path='events' element={savedData === "" ? <FirstPage /> : <Events />} />            
+              <Route path='events' element={savedData === "" ? <FirstPage /> : <Events userDetails = {allValue} />} />            
           </Routes>
           <Footer />
     </div>
