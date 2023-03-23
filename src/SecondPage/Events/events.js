@@ -4,15 +4,30 @@ import ForestEvents from "./ForestEvents";
 
 export default function Events({userDetails}){
   
-    let [participantInfo,setParticipantInfo] = useState();
+    let [participantInfo,setParticipantInfo] = useState({});
     let participant = localStorage.getItem("name");
+    let [forestEventData,setForestEventData] =useState([]);
+
     useEffect(() =>{
         userDetails.map((value ,index) => {
             if(value.Username === participant){
                 setParticipantInfo(userDetails[index]);
             }
-        })
+                return index;        
+        })      
     })
+    
+    // getting data from database
+    useEffect(() =>{
+    fetch("http://localhost:5000/forestApi").then(
+        response => response.json()
+        ).then(
+        data => {
+        setForestEventData(data)
+        }
+    )
+    },[])
+
     return (
         <div className="event-container">
             <div className="events_buttons">
@@ -20,7 +35,7 @@ export default function Events({userDetails}){
                 <button >LAKES</button>
                 <button >FORESTS</button>
             </div>
-            <ForestEvents participantInfo={participantInfo}/>
+            <ForestEvents forestData={forestEventData} participantInfo={participantInfo}/>
             <HowItWorks />
         </div>
     )

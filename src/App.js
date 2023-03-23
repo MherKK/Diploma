@@ -27,8 +27,8 @@ useEffect(() =>{
         const getData = Object.values(data.val());
         setAllValue(getData);
     })
+    
 },[])
-
 //function to check for inactivity
 const checkForInactivity = () => {
   const expireTime = localStorage.getItem("expireTime");
@@ -73,8 +73,6 @@ useEffect(() =>{
   }
 
 },[])
-
-
 
   return (
     <div className="App" >
