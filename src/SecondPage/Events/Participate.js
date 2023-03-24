@@ -1,7 +1,16 @@
 import { useState } from "react";
+import Axios from "axios";
 
-export default function Participate({Value,participantInfo}){
+export default function Participate({Value,participantInfo,ForestData,setForestEventData}){
     let [disable,setDisable] = useState(false);
+   
+    const updateParticipant = () => {
+        Axios.put("http://localhost:5000/update",{ 
+            participants: +Value.participants + 1,
+            id: Value.id       
+    })
+
+    }
  
     return(
         <div key={Value.id} className="forestevents-container">
@@ -13,9 +22,10 @@ export default function Participate({Value,participantInfo}){
                 {
                     Value.participants !== participantInfo.Username ? <button className="forest-event_join-button" disabled={disable}
                     onClick={() => {
-                        if(Value.participants === Value.participantsLimit -1){
+                        if(Value.participants === Value.participantsLimit ){
                             setDisable(true)
                         }else{
+                            updateParticipant()
                             setDisable(false)
                         }
                     }}>J O I N</button> :

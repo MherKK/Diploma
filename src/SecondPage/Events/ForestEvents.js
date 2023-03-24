@@ -3,7 +3,7 @@ import Participate from "./Participate";
 
 
 
-export default function ForestEvents({participantInfo,forestData}){
+export default function ForestEvents({participantInfo,forestData,setForestEventData}){
 
     //getting data for forest events
 
@@ -13,7 +13,7 @@ export default function ForestEvents({participantInfo,forestData}){
                     forestData.map((value ,index) => {
                         return(
                             <>
-                                <Participate Value={value} participantInfo={participantInfo}/>
+                                <Participate ForestData = {forestData} setForestEventData={setForestEventData} Value={value} participantInfo={participantInfo}/>
                             </>
                         )
                     })

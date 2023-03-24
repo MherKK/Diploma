@@ -1,3 +1,4 @@
+import Axios from "axios";
 import { useEffect, useState } from "react";
 import HowItWorks from "../../main/howitworks/howitworks";
 import ForestEvents from "./ForestEvents";
@@ -19,14 +20,11 @@ export default function Events({userDetails}){
     
     // getting data from database
     useEffect(() =>{
-    fetch("http://localhost:5000/forestApi").then(
-        response => response.json()
-        ).then(
-        data => {
-        setForestEventData(data)
-        }
-    )
+    Axios.get("http://localhost:5000/forestApi").then(
+        response => setForestEventData(response.data)
+        )
     },[])
+ 
 
     return (
         <div className="event-container">
@@ -35,7 +33,7 @@ export default function Events({userDetails}){
                 <button >LAKES</button>
                 <button >FORESTS</button>
             </div>
-            <ForestEvents forestData={forestEventData} participantInfo={participantInfo}/>
+            <ForestEvents forestData={forestEventData} setForestEventData={setForestEventData} participantInfo={participantInfo}/>
             <HowItWorks />
         </div>
     )
