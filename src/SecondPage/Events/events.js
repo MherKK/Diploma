@@ -1,4 +1,3 @@
-import Axios from "axios";
 import { useEffect, useState } from "react";
 import HowItWorks from "../../main/howitworks/howitworks";
 import ForestEvents from "./ForestEvents";
@@ -7,7 +6,7 @@ export default function Events({userDetails}){
   
     let [participantInfo,setParticipantInfo] = useState({});
     let participant = localStorage.getItem("name");
-    let [forestEventData,setForestEventData] =useState([]);
+
 
     useEffect(() =>{
         userDetails.map((value ,index) => {
@@ -18,12 +17,7 @@ export default function Events({userDetails}){
         })      
     })
     
-    // getting data from database
-    useEffect(() =>{
-    Axios.get("http://localhost:5000/forestApi").then(
-        response => setForestEventData(response.data)
-        )
-    },[])
+    
  
 
     return (
@@ -33,7 +27,7 @@ export default function Events({userDetails}){
                 <button >LAKES</button>
                 <button >FORESTS</button>
             </div>
-            <ForestEvents forestData={forestEventData} setForestEventData={setForestEventData} participantInfo={participantInfo}/>
+            <ForestEvents participantInfo={participantInfo}/>
             <HowItWorks />
         </div>
     )
