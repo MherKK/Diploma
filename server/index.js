@@ -21,6 +21,24 @@ app.get("/forestApi" , (req,res) => {
         })
 });
 
+app.get("/forestApi/Zparticipants" , (req,res) => {    
+    let query = "SELECT Zparticipants from forest_events_participants";
+    con.query(query, (err,result) => {
+        res.json(result)
+        
+    })
+});
+
+app.post("/forestApi/Zparticipants/update", (req,res) => {
+    let participants = req.body.participants;
+    let updatePart = "INSERT INTO forest_events_participants (Zparticipants) VALUES (?)";
+    con.query(updatePart,participants,(err,results) => {
+        if(err) console.log(err);
+        res.send(results);
+        console.log(req.body);
+    }); 
+});
+
 app.put("/update", (req,res) => {
     let participants = req.body.participants;
     let id = req.body.id;
@@ -28,7 +46,6 @@ app.put("/update", (req,res) => {
     con.query(updatePart,[participants,id],(err,results) => {
         if(err) console.log(err);
         res.send(results);
-        console.log(req.body);
     }); 
 });
 
