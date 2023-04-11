@@ -5,44 +5,60 @@ import  Axios  from "axios";
 export default function ForestEvents({participantInfo}){
     let [disable,setDisable] = useState(false);
     let [forestEventData,setForestEventData] =useState([]);
-    let [zP , setZP] = useState([]);
+    let [zData,setZData] = useState([]);
+    let [dData,setDData] = useState([]);
+
+
+    let arrayOfAll = zData.concat(dData);
     // getting data from database
     useEffect(() =>{
         Axios.get("http://localhost:5000/forestApi").then(
             response => setForestEventData(response.data)
             )
-        
-        Axios.get("http://localhost:5000/forestApi/Zparticipants").then( res => {   
-            setZP(res.data);
-    })
-        },[])
 
-    const updateParticipant = (id) => {
-        Axios.get("http://localhost:5000/forestApi/Zparticipants").then( res => {   
-            setZP(res.data);
-    })
+        Axios.get("http://localhost:5000/forestApi/Zparticipants").then( result => {
+            setZData(result.data)
+        })
+
+        Axios.get("http://localhost:5000/forestApi/Dparticipants").then( result => {
+            setDData(result.data)
+        })
+
+        },[forestEventData.length])
+
+
+    const  updateParticipant =  (id,value,partCount) => {   
+        
         Axios.put("http://localhost:5000/update",{ 
-                participants: zP.length,
+                participants: partCount,
                 id: id       
         })
-        .then(res => {
-            setForestEventData(forestEventData.map((val) => {
-                return val.id == id ? {id:val.id,address:val.address,time:val.time,date:val.date,participantsLimit:val.participantsLimit,participants:zP.length} : val 
-        }))
-        })      
+
+        setForestEventData(forestEventData.map((val) => {
+                return val.id === id ? {id:val.id,address:val.address,time:val.time,date:val.date,participantsLimit:val.participantsLimit,participants:partCount} : val 
+        }))      
+
+       
+        
         }
-    
-    const insertParticipants = () => {
-        Axios.post("http://localhost:5000/forestApi/Zparticipants/update",{
-            participants : participantInfo.Username
-        } )
+ 
+    const insertZPart = () => {
+        Axios.post("http://localhost:5000/forestApi/Zparticipants/update", {
+            participants: participantInfo.Username
+        })
     }
+
+    const insertDPart = () => {
+        Axios.post("http://localhost:5000/forestApi/Dparticipants/update", {
+            participants: participantInfo.Username
+        })
+    }
+       
     return(
         <>
             {
                     forestEventData.map((Value ,index) => {
                         return(
-                            <>
                                 <div key={Value.id} className="forestevents-container">
                                     <div className="forestevents-container-top">
                                         <h3>Place To Clean: {Value.address}</h3>
@@ -50,28 +66,32 @@ export default function ForestEvents({participantInfo}){
                                     </div> 
                                     <div className="forestevents-container-top">
                                         {
-                                            zP.map(value => {
-                                                if(value.participants !== participantInfo.Username){
-                                                    return value
+                                           arrayOfAll.map(val => {
+                                            if(val.Zparticipants === participantInfo.Username || val.Dparticipants === participantInfo.Username){
+                                                
+                                            }
+                                           }) ? <button className="forest-event_join-button" disabled={disable}
+                                            onClick={() => {                                             
+                                                  
+                                                if(index === 0) {
+                                                    insertZPart()
+                                                    updateParticipant(Value.id, Value, +Value.participants + 1)
+                                                }else if (index === 1){
+                                                    insertDPart()
+                                                    updateParticipant(Value.id, Value, +Value.participants + 1)
                                                 }
-                                            }) !== participantInfo.Username ? <button className="forest-event_join-button" disabled={disable}
-                                            onClick={() => {
-                                                if(Value.participants === Value.participantsLimit ){
-                                                    setDisable(true)
-                                                }else{
-                                                    updateParticipant(Value.id)
-                                                    setDisable(false)
-                                                    insertParticipants();
-                                                }
+
                                             }}>J O I N</button> :
-                                            <button className="forest-event_join-button" disabled={disable}
+                                            <button className="forest-event_join-button" 
                                             onClick={() => {
+                                                updateParticipant(Value.id, +Value.participants - 1, Value)
+                                               
                                             }}>L E A V E</button>
                                         }
                                         <p>{"Event Date: "+Value.date +"  "+Value.time}</p>
                                     </div>
                                 </div>
-                            </>
+                          
                         )
                     })
             }
