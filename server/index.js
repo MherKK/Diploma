@@ -36,7 +36,7 @@ app.listen(5000, () => {
 });
 
 app.get("/forestApi/Zparticipants" , (req,res) => {    
-    let query = "SELECT Zparticipants from forest_events_participants";
+    let query = "SELECT * from forest_events_participants";
     con.query(query, (err,result) => {
         res.json(result)
         

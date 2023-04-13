@@ -3,13 +3,11 @@ import "./events.css"
 import  Axios  from "axios";
 
 export default function ForestEvents({participantInfo}){
-    let [disable,setDisable] = useState(false);
+
     let [forestEventData,setForestEventData] =useState([]);
     let [zData,setZData] = useState([]);
     let [dData,setDData] = useState([]);
 
-
-    let arrayOfAll = zData.concat(dData);
     // getting data from database
     useEffect(() =>{
         Axios.get("http://localhost:5000/forestApi").then(
@@ -23,6 +21,14 @@ export default function ForestEvents({participantInfo}){
         Axios.get("http://localhost:5000/forestApi/Dparticipants").then( result => {
             setDData(result.data)
         })
+        zData.map( val => {
+            if(val.Zparticipants === 'testing'){
+               return forestEventData[0].participate === "leave"
+            }else{
+                return forestEventData[0].participate === "join"
+            }
+        })
+       
 
         },[forestEventData.length])
 
@@ -32,15 +38,19 @@ export default function ForestEvents({participantInfo}){
         Axios.put("http://localhost:5000/update",{ 
                 participants: partCount,
                 id: id       
-        })
-
-        setForestEventData(forestEventData.map((val) => {
-                return val.id === id ? {id:val.id,address:val.address,time:val.time,date:val.date,participantsLimit:val.participantsLimit,participants:partCount} : val 
-        }))      
-
-       
+        })       
         
+        if(partCount === value.participantsLimit) {
+            setForestEventData(forestEventData.map((val) => {
+                return val.id === id ? {id:val.id,address:val.address,time:val.time,date:val.date,participantsLimit:val.participantsLimit,participants:partCount,buttonDisable:"",participate:val.participate} : val 
+        }))
+        }else{
+            setForestEventData(forestEventData.map((val) => {
+                return val.id === id ? {id:val.id,address:val.address,time:val.time,date:val.date,participantsLimit:val.participantsLimit,participants:partCount,buttonDisable:"dadw",participate:val.participate} : val 
+            }))
         }
+        }
+ 
  
     const insertZPart = () => {
         Axios.post("http://localhost:5000/forestApi/Zparticipants/update", {
@@ -53,6 +63,7 @@ export default function ForestEvents({participantInfo}){
             participants: participantInfo.Username
         })
     }
+ 
        
     return(
         <>
@@ -66,11 +77,7 @@ export default function ForestEvents({participantInfo}){
                                     </div> 
                                     <div className="forestevents-container-top">
                                         {
-                                           arrayOfAll.map(val => {
-                                            if(val.Zparticipants === participantInfo.Username || val.Dparticipants === participantInfo.Username){
-                                                
-                                            }
-                                           }) ? <button className="forest-event_join-button" disabled={disable}
+                                           Value.participate === "join" ? <button className="forest-event_join-button" disabled={!Boolean(Value.buttonDisable)}
                                             onClick={() => {                                             
                                                   
                                                 if(index === 0) {
@@ -84,7 +91,7 @@ export default function ForestEvents({participantInfo}){
                                             }}>J O I N</button> :
                                             <button className="forest-event_join-button" 
                                             onClick={() => {
-                                                updateParticipant(Value.id, +Value.participants - 1, Value)
+                                                updateParticipant(Value.id,Value, +Value.participants - 1)
                                                
                                             }}>L E A V E</button>
                                         }
