@@ -54,6 +54,16 @@ app.post("/forestApi/Zparticipants/update", (req,res) => {
 });
 
 
+app.delete("/forestApi/Zparticipants/delete/:id", (req,res) => {
+    let participants = req.params.id;
+    let updatePart = ` DELETE FROM forest_events_participants WHERE Zparticipants = ? `;
+    con.query(updatePart,participants,(err,results) => {
+        if(err) console.log(err);
+        res.send(results);
+        console.log(req.body);
+    }); 
+});
+
 app.get("/forestApi/Dparticipants" , (req,res) => {    
     let query = "SELECT Dparticipants from forest_event_dparticipants";
     con.query(query, (err,result) => {
@@ -64,6 +74,16 @@ app.get("/forestApi/Dparticipants" , (req,res) => {
 app.post("/forestApi/Dparticipants/update", (req,res) => {
     let participants = req.body.participants;
     let updatePart = "INSERT INTO forest_event_dparticipants (Dparticipants) VALUES (?)";
+    con.query(updatePart,participants,(err,results) => {
+        if(err) console.log(err);
+        res.send(results);
+        console.log(req.body);
+    }); 
+});
+
+app.delete("/forestApi/Zparticipants/delete/:id", (req,res) => {
+    let participants = req.params.id;
+    let updatePart = ` DELETE FROM forest_event_dparticipants WHERE Dparticipants = ? `;
     con.query(updatePart,participants,(err,results) => {
         if(err) console.log(err);
         res.send(results);
