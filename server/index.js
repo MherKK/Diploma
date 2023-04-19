@@ -21,10 +21,44 @@ app.get("/forestApi" , (req,res) => {
         })
 });
 
-app.put("/update", (req,res) => {
+app.get("/riverApi" , (req,res) => {    
+    let query = "SELECT * from river_events";
+    con.query(query, (err,result) => {
+        res.json(result)
+    })
+});
+
+app.get("/lakeApi" , (req,res) => {    
+    let query = "SELECT * from lake_events";
+    con.query(query, (err,result) => {
+        res.json(result)
+    })
+});
+
+app.put("/update/forest_events", (req,res) => {
     let participants = req.body.participants;
     let id = req.body.id;
     let updatePart = `UPDATE forest_events SET participants  = ? WHERE id = ? `;
+    con.query(updatePart,[participants,id],(err,results) => {
+        if(err) console.log(err);
+        res.send(results);
+    }); 
+});
+
+app.put("/update/river_events", (req,res) => {
+    let participants = req.body.participants;
+    let id = req.body.id;
+    let updatePart = `UPDATE river_events SET participants  = ? WHERE id = ? `;
+    con.query(updatePart,[participants,id],(err,results) => {
+        if(err) console.log(err);
+        res.send(results);
+    }); 
+});
+
+app.put("/update/lake_events", (req,res) => {
+    let participants = req.body.participants;
+    let id = req.body.id;
+    let updatePart = `UPDATE lake_events SET participants  = ? WHERE id = ? `;
     con.query(updatePart,[participants,id],(err,results) => {
         if(err) console.log(err);
         res.send(results);

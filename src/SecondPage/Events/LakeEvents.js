@@ -2,32 +2,31 @@ import { useEffect, useRef, useState } from "react";
 import "./events.css"
 import  Axios  from "axios";
 import emailjs from "@emailjs/browser";
-export default function ForestEvents({participantInfo}){
+export default function LakeEvents({participantInfo}){
 
-    let [forestEventData,setForestEventData] =useState([]);
+    let [riverEventData,setriverEventData] =useState([]);
     let emailForm = useRef();
-
-    const joinButtonHandler = useRef();
     // getting data from database
     useEffect(() =>{
-        Axios.get("http://localhost:5000/forestApi").then(
-            response => setForestEventData(response.data)
+        Axios.get("http://localhost:5000/lakeApi").then(
+            response => setriverEventData(response.data)
             )
-        },[forestEventData.length])
+        },[riverEventData.length])
 
     const  updateParticipant =  (id,value,partCount) => {   
-        Axios.put("http://localhost:5000/update",{ 
-                participants: partCount,
-                id: id       
+        
+        Axios.put("http://localhost:5000/update/lake_events",{ 
+                    participants: partCount,
+                    id: id       
         })       
         
         if(partCount === value.participantsLimit) {
-            setForestEventData(forestEventData.map((val) => {
+            setriverEventData(riverEventData.map((val) => {
                 return val.id === id ? {id:val.id,address:val.address,time:val.time,date:val.date,participantsLimit:val.participantsLimit,participants:partCount,buttonDisable:"",participate:val.participate} : val 
         }))
         }else{
-            setForestEventData(forestEventData.map((val) => {
-                return val.id === id ? {id:val.id,address:val.address,time:val.time,date:val.date,participantsLimit:val.participantsLimit,participants:partCount,buttonDisable:"dadw",participate:val.participate} : val 
+            setriverEventData(riverEventData.map((val) => {
+                return val.id === id ? {id:val.id,address:val.address,time:val.time,date:val.date,participantsLimit:val.participantsLimit,participants:partCount,buttonDisable:"dadw",participate:""} : val 
             }))
         }
         emailjs.sendForm(
@@ -36,40 +35,24 @@ export default function ForestEvents({participantInfo}){
             emailForm.current,
             "qOxzZCRNgEm1JrUxf"
         )
-        }
-
-        const leaveEvent = (id,partCount) => {
-            setForestEventData(forestEventData.map((val) => {
-                
-                return val.id === id ? {id:val.id,address:val.address,time:val.time,date:val.date,participantsLimit:val.participantsLimit,participants:partCount,buttonDisable:val.buttonDisable,participate:"join"} : val 
-            }))     
-        }
- 
-        
-    const insertZPart = () => {
-        Axios.post("http://localhost:5000/forestApi/Zparticipants/update", {
-            participants: participantInfo.Username
-        })
-    }
-
-    const deleteZPart = () => {
-        Axios.delete(`http://localhost:5000/forestApi/Zparticipants/delete/${participantInfo.Username} `)
-    }
-
-    const insertDPart = () => {
-        Axios.post("http://localhost:5000/forestApi/Dparticipants/update", {
-            participants: participantInfo.Username
-        })
+    
     }
     
-    const deleteDPart = () => {
-        Axios.delete(`http://localhost:5000/forestApi/Zparticipants/delete/${participantInfo.Username} `)
-    }
-     
+    const leaveEvent = (id,partCount) => {
+                setriverEventData(riverEventData.map((val) => {
+
+                    return val.id === id ? {id:val.id,address:val.address,time:val.time,date:val.date,participantsLimit:val.participantsLimit,participants:partCount,buttonDisable:val.buttonDisable,participate:"join"} : val 
+                }))
+                Axios.put("http://localhost:5000/update/lake_events",{ 
+                    participants: partCount,
+                    id: id       
+        })    
+        }
+    
     return(
         <>
             {
-                    forestEventData.map((Value ,index) => {
+                    riverEventData.map((Value ,index) => {
                         return(
                                 <div key={Value.id} className="forestevents-container">
                                     <div className="forestevents-container-top">
@@ -78,15 +61,17 @@ export default function ForestEvents({participantInfo}){
                                     </div> 
                                     <div className="forestevents-container-top">
                                         {
-                                          
-                                          Value.participate === "join" ? <button ref={joinButtonHandler} className="forest-event_join-button" disabled={!Boolean(Value.buttonDisable)}
+                                         
+                                          Value.participate === "join" ? <button className="forest-event_join-button" disabled={!Boolean(Value.buttonDisable)}
                                             onClick={() => {                                             
                                                   
-                                                if(index === 0) {
-                                                    insertZPart()
+                                                if(index === 0) {                    
                                                     updateParticipant(Value.id, Value, +Value.participants + 1)
-                                                }else if (index === 1){
-                                                    insertDPart()
+                                                }else if (index === 1){                  
+                                                    updateParticipant(Value.id, Value, +Value.participants + 1)
+                                                }else if (index === 2) {
+                                                    updateParticipant(Value.id, Value, +Value.participants + 1)
+                                                }else if(index === 3){
                                                     updateParticipant(Value.id, Value, +Value.participants + 1)
                                                 }
 
@@ -94,11 +79,13 @@ export default function ForestEvents({participantInfo}){
                                             <button className="forest-event_join-button" 
                                             onClick={() => {
                                                 
-                                                if(index === 0) {
-                                                    deleteZPart()
+                                                if(index === 0) {                        
                                                     leaveEvent(Value.id,+Value.participants - 1)
                                                 }else if (index === 1){
-                                                    deleteDPart()
+                                                    leaveEvent(Value.id,+Value.participants - 1)
+                                                }else if(index === 2){
+                                                    leaveEvent(Value.id,+Value.participants - 1)
+                                                }else if(index === 3) {
                                                     leaveEvent(Value.id,+Value.participants - 1)
                                                 }
                                             }}>L E A V E</button>
@@ -109,6 +96,7 @@ export default function ForestEvents({participantInfo}){
                           
                         )
                     })
+                    
             }
             <form ref={emailForm} hidden>
                 <div></div>
