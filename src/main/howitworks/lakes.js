@@ -2,14 +2,11 @@ import river from "../../Assets/thebigidea.png";
 import map from "../../Assets/map.png";
 import removal from "../../Assets/removal.png";
 import recycle from "../../Assets/recycle.png";
-import lake from "../../Assets/lake.jpg";
 export default function Lakes(){
 
 
     return(
         <div className="river-container">
-            <h1 style={{color:"lightblue"}}>LAKES</h1>
-            <img alt="" src={lake} />
             <div className="thebigidea">
                 <img src={river} alt="" />
                 <div>

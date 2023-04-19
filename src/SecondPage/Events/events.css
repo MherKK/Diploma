@@ -8,10 +8,11 @@
 }
 
 .events_buttons {
-    background-color: rgb(189, 235, 250);
+    background-color: rgb(255, 255, 255);
     margin-bottom: 20px;
-    width: 100%;
+    width: 50%;
     height: 40px;
+    border-radius: 8px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -38,7 +39,7 @@
 .forestevents-container {
     border-radius: 10px;
     border: 1px solid silver;
-    width: 90%;
+    width: 40%;
     padding: 20px;
     margin-bottom: 20px;
     background-color: white;

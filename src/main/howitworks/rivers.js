@@ -3,14 +3,11 @@ import river from "../../Assets/thebigidea.png";
 import research from "../../Assets/research.png";
 import collecttrash from "../../Assets/collecttrash.png";
 import emptyandrepeat from "../../Assets/emptyandrepeat.png";
-import rivers from "../../Assets/rivers.jpg";
 export default function Rivers(){
 
 
     return(
         <div className="river-container">
-            <h1 style={{color:"lightblue"}}>RIVERS</h1>
-            <img  alt="" src={rivers} />
             <div className="thebigidea">
                 <img src={river} alt="" />
                 <div>

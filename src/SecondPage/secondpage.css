@@ -3,7 +3,6 @@
     border: 1px solid silver;
     padding: 15px;
     border-radius: 10px;
-    background-color: rgb(194, 241, 201);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -16,43 +15,35 @@
 }
 .joinourevents > h3 {
     font-size: 30px;
-    color: rgb(116, 211, 116);
+    color: white;
     line-height: 0%;
 }
 
 .joinourevents p {
     font-size: 12px;
-    line-height: 14px;
+    line-height: 24px;
     font-weight: 700;
 }
 
 .joinevents-container a {
     text-decoration: none;
-    color: white;
+    color: black;
 }
 
 .joinevents-container {
     width: 150px;
     padding: 6px;
-    background-color: rgb(116, 211, 116);
+    background-color: white;
     border-radius: 8px;
+    cursor: pointer;
 }
 
-.joinourevents > img {
-    width: 99%;
-    height: 260px;
-}
+
 
 @media (min-width: 550px) {
     .secondpage-container {
         width: 500px;
     }
-    .joinourevents > img {
-        width: 400px;
-        text-align: left;
-        height: 400px;
-    }
-
     .joinourevents > p {
         width: 400px;
     }

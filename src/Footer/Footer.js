@@ -11,7 +11,6 @@ export default function Footer (){
     let root2 = document.body;
     return (
           <div >
-            
             {openFAQ === false ? " " : <FAQ setOPen = {setOpenFAQ} root={root2}/>}
             {openContact === false ? " " : <ContactUs setOPen = {setContact} root={root2} />}
             {openPress === false ? " " : <PressInquiries setOPen = {setPress} root={root2}/>}

@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import "./events.css"
 import  Axios  from "axios";
-
 export default function ForestEvents({participantInfo}){
 
     let [forestEventData,setForestEventData] =useState([]);

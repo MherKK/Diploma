@@ -18,7 +18,7 @@
     width: 200px;
     border-radius: 20px;
     border: 1px solid saddlebrown;
-    color:silver;
+    color:white;
     font-size: 20px;
     cursor: pointer;
     background-color: transparent;
@@ -29,7 +29,7 @@
 }
 
 .footer-container_buttons > button:hover {
-    border: 1px solid silver;
+    border: 1px solid white;
 }
 
 .footer-container_links {
@@ -42,12 +42,13 @@
 .footer-container_links > a  {
     text-decoration: none;
     letter-spacing: 2px;
-    color: silver;
+    color: white;
+    font-weight: 700;
 }
 
 .terms-link {
     padding-right: 20px;
-    border-right: 1px solid silver;
+    border-right: 1px solid white;
 }
 
 .footer-container_links > a:hover {

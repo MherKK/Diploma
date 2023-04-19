@@ -1,9 +1,9 @@
 import Main from "./main/Main";
 
-export default function FirstPage ({donationRef}) {
+export default function FirstPage ({donationRef,setBackImage}) {
     return (
         <div>
-            <Main donationRef={donationRef}/>
+            <Main donationRef={donationRef} setBackImage={setBackImage}/>
         </div>
     )
 }

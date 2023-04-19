@@ -3,7 +3,7 @@ import { dataRef } from "../../firebase";
 import Topmain from "../topmain";
 import "./donatorlist.css"
 export default function DonatorFullList(){
-    const imagePerRow = 2;
+    const imagePerRow = 3;
     let [donationDetails,setDonationDetails] = useState([]);
     let [filter,setFilter] = useState(true);
     useEffect(() =>{

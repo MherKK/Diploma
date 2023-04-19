@@ -43,6 +43,7 @@ export default function Header ({User,setSignUp,setLogIn,setSavedData}){
                     <div>Welcome {User[0].toUpperCase() + User.slice(1,User.length)}</div>
                     <Link to="/" onClick={() => {
                         setSavedData("");
+                        localStorage.setItem("name","")
                     }}>Logout</Link>
                 </div>
             </div>

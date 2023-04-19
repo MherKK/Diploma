@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { dataRef } from "../../firebase";
 import "./donatorlist.css"
 export default function DonatorsList(){
-    const imagePerRow = 8;
+    const imagePerRow = 4;
     let [donationDetails,setDonationDetails] = useState([]);
     let [filter,setFilter] = useState(true);
     useEffect(() =>{

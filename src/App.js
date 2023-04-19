@@ -13,13 +13,13 @@ import { useEffect } from 'react';
 import { dataRef } from './firebase';
 import DonatorFullList from './main/donatorslist/donatorfulllist';
 import Events from './SecondPage/Events/events';
-import Axios from "axios";
-
+import lake from "./Assets/lake.webp"
 function App() {
 let [savedData,setSavedData] = useState(localStorage.getItem("name") || "")
 let [signup, setSignUp] = useState(true);
 let [login,setLogIn] = useState(false);
 let [allValue,setAllValue] = useState([]);
+let [backImage,setBackImage] = useState(lake);
 const donationRef = useRef(null);
 
 //get data from firestore
@@ -76,7 +76,7 @@ useEffect(() =>{
 },[])
 
   return (
-    <div className="App" >
+    <div className="App" style={{backgroundImage:`url(${backImage})`}} >
          {signup === true ? 
           <Header setSignUp={setSignUp} User={savedData} 
           setLogIn={setLogIn} setSavedData={setSavedData}
@@ -87,11 +87,11 @@ useEffect(() =>{
           {login === false ? "" : <Login setSavedData={setSavedData} setLogIn={setLogIn} AllValue = {allValue}  
            />}       
           <Routes>
-              <Route path='/' element={savedData === "" ? <FirstPage donationRef={donationRef} /> : <SecondPage donationRef={donationRef}/>} />                   
+              <Route path='/' element={savedData === "" ? <FirstPage setBackImage={setBackImage} donationRef={donationRef} /> : <SecondPage setBackImage={setBackImage} donationRef={donationRef}/>} />                   
               <Route path='terms' element={<Terms />}/>
               <Route path="privacy" element={<Privacy />}/>
               <Route path='donatorfulllist' element={<DonatorFullList />} />
-              <Route path='events' element={savedData === "" ? <FirstPage /> : <Events userDetails = {allValue} />} />            
+              <Route path='events' element={savedData === "" ? <FirstPage /> : <Events setBackImage={setBackImage} userDetails = {allValue} />} />            
           </Routes>
           <Footer />
     </div>
