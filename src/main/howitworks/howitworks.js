@@ -13,7 +13,7 @@ export function lolig(image){
 
 
 export default function HowItWorks({setBackImage}){
-     let [environment,setEnvironment] = useState("rivers")
+     let [environment,setEnvironment] = useState("lakes")
     return(
        <div className="howitworks-container">
             <div className="howitworks_top">
