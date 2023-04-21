@@ -6,6 +6,7 @@ import riverImage from "../../Assets/river.webp"
 import lakeImage from "../../Assets/lake.webp"
 import LakeEvents from "./LakeEvents";
 import RiverEvents from "./RiverEvents";
+import "./events.css"
 export default function Events({userDetails,setBackImage}){
   
     let [participantInfo,setParticipantInfo] = useState({});

@@ -65,62 +65,134 @@ app.put("/update/lake_events", (req,res) => {
     }); 
 });
 
+app.put("/update/forest_events/details", (req,res) => {
+    let id = req.body.id;
+    let address = req.body.address;
+    let time = req.body.time;
+    let date = req.body.date;
+    let participantsLimit = req.body.participantsLimit;
+    let participants = req.body.participants;
+
+    let updatePart = `UPDATE forest_events SET address = ? , time = ? , date = ? , participantsLimit = ?,participants  = ?  WHERE id = ? `;
+    con.query(updatePart,[address,time,date,participantsLimit,participants,id],(err,results) => {
+        if(err) console.log(err);
+        res.send(results);
+        console.log(req.body);
+    }); 
+});
+
+app.put("/update/river_events/details", (req,res) => {
+    let id = req.body.id;
+    let address = req.body.address;
+    let time = req.body.time;
+    let date = req.body.date;
+    let participantsLimit = req.body.participantsLimit;
+    let participants = req.body.participants;
+
+    let updatePart = `UPDATE river_events SET address = ? , time = ? , date = ? , participantsLimit = ?,participants  = ?  WHERE id = ? `;
+    con.query(updatePart,[address,time,date,participantsLimit,participants,id],(err,results) => {
+        if(err) console.log(err);
+        res.send(results);
+        console.log(req.body);
+    }); 
+});
+
+app.put("/update/lake_events/details", (req,res) => {
+    let id = req.body.id;
+    let address = req.body.address;
+    let time = req.body.time;
+    let date = req.body.date;
+    let participantsLimit = req.body.participantsLimit;
+    let participants = req.body.participants;
+
+    let updatePart = `UPDATE lake_events SET address = ? , time = ? , date = ? , participantsLimit = ?,participants  = ?  WHERE id = ? `;
+    con.query(updatePart,[address,time,date,participantsLimit,participants,id],(err,results) => {
+        if(err) console.log(err);
+        res.send(results);
+        console.log(req.body);
+    }); 
+});
+
+app.delete("/delete/forest_events/:id", (req,res) => {
+    let id = req.params.id;
+    let updatePart = ` DELETE FROM forest_events WHERE id = ? `;
+    con.query(updatePart,id,(err,results) => {
+        if(err) console.log(err);
+        res.send(results);
+        
+    }); 
+});
+
+app.delete("/delete/river_events/:id", (req,res) => {
+    let id = req.params.id;
+    let updatePart = ` DELETE FROM river_events WHERE id = ? `;
+    con.query(updatePart,id,(err,results) => {
+        if(err) console.log(err);
+        res.send(results);
+        
+    }); 
+});
+
+app.delete("/delete/lake_events/:id", (req,res) => {
+    let id = req.params.id;
+    let updatePart = ` DELETE FROM lake_events WHERE id = ? `;
+    con.query(updatePart,id,(err,results) => {
+        if(err) console.log(err);
+        res.send(results);
+        
+    }); 
+});
+
 app.listen(5000, () => {
     console.log("okay test");
 });
 
-app.get("/forestApi/Zparticipants" , (req,res) => {    
-    let query = "SELECT * from forest_events_participants";
-    con.query(query, (err,result) => {
-        res.json(result)
-        
-    })
-});
 
-app.post("/forestApi/Zparticipants/update", (req,res) => {
+
+app.post("/forestApi/insertNewEvent", (req,res) => {
+    let address = req.body.address;
+    let time = req.body.time;
+    let date = req.body.date;
+    let participantsLimit = req.body.participantsLimit;
     let participants = req.body.participants;
-    let updatePart = "INSERT INTO forest_events_participants (Zparticipants) VALUES (?)";
-    con.query(updatePart,participants,(err,results) => {
+    let buttonDisable = req.body.buttonDisable;
+    let participate = req.body.participate;
+    let updatePart = "INSERT INTO forest_events  (address,time,date,participantsLimit,participants,buttonDisable,participate) VALUES (?,?,?,?,?,?,?)";
+    con.query(updatePart,[address,time,date,participantsLimit,participants,buttonDisable,participate],(err,results) => {
         if(err) console.log(err);
         res.send(results);
-        console.log(req.body);
+       
     }); 
 });
 
-
-app.delete("/forestApi/Zparticipants/delete/:id", (req,res) => {
-    let participants = req.params.id;
-    let updatePart = ` DELETE FROM forest_events_participants WHERE Zparticipants = ? `;
-    con.query(updatePart,participants,(err,results) => {
-        if(err) console.log(err);
-        res.send(results);
-        console.log(req.body);
-    }); 
-});
-
-app.get("/forestApi/Dparticipants" , (req,res) => {    
-    let query = "SELECT Dparticipants from forest_event_dparticipants";
-    con.query(query, (err,result) => {
-        res.json(result)
-    })
-});
-
-app.post("/forestApi/Dparticipants/update", (req,res) => {
+app.post("/riverApi/insertNewEvent", (req,res) => {
+    let address = req.body.address;
+    let time = req.body.time;
+    let date = req.body.date;
+    let participantsLimit = req.body.participantsLimit;
     let participants = req.body.participants;
-    let updatePart = "INSERT INTO forest_event_dparticipants (Dparticipants) VALUES (?)";
-    con.query(updatePart,participants,(err,results) => {
+    let buttonDisable = req.body.buttonDisable;
+    let participate = req.body.participate;
+    let updatePart = "INSERT INTO river_events  (address,time,date,participantsLimit,participants,buttonDisable,participate) VALUES (?,?,?,?,?,?,?)";
+    con.query(updatePart,[address,time,date,participantsLimit,participants,buttonDisable,participate],(err,results) => {
         if(err) console.log(err);
         res.send(results);
-        console.log(req.body);
+       
     }); 
 });
 
-app.delete("/forestApi/Zparticipants/delete/:id", (req,res) => {
-    let participants = req.params.id;
-    let updatePart = ` DELETE FROM forest_event_dparticipants WHERE Dparticipants = ? `;
-    con.query(updatePart,participants,(err,results) => {
+app.post("/lakeApi/insertNewEvent", (req,res) => {
+    let address = req.body.address;
+    let time = req.body.time;
+    let date = req.body.date;
+    let participantsLimit = req.body.participantsLimit;
+    let participants = req.body.participants;
+    let buttonDisable = req.body.buttonDisable;
+    let participate = req.body.participate;
+    let updatePart = "INSERT INTO lake_events  (address,time,date,participantsLimit,participants,buttonDisable,participate) VALUES (?,?,?,?,?,?,?)";
+    con.query(updatePart,[address,time,date,participantsLimit,participants,buttonDisable,participate],(err,results) => {
         if(err) console.log(err);
         res.send(results);
-        console.log(req.body);
+       
     }); 
 });

@@ -43,6 +43,9 @@
     padding: 20px;
     margin-bottom: 20px;
     background-color: white;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .forest-event_join-button {
@@ -54,4 +57,40 @@
 
 .forestevents-container-top > p {
     font-weight: 500;
+}
+
+
+.adminformediting {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    width: 39%;
+    padding: 30px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.adminformediting > div > input {
+    width: 420px;
+    height: 40px;
+    padding-left: 20px;
+}
+
+.adminformupdating {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.adminformupdating > div > input {
+    width: 300px;
+    height: 40px;
+    padding-left: 20px;
+}
+
+.adminformupdating > div > button {
+    background-color:  rgb(95, 199, 234);
 }

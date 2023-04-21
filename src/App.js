@@ -27,8 +27,7 @@ useEffect(() =>{
     dataRef.ref().child("User").on('value', data =>{
         const getData = Object.values(data.val());
         setAllValue(getData);
-    })
-    
+    })    
 },[])
 //function to check for inactivity
 const checkForInactivity = () => {
