@@ -74,6 +74,9 @@ useEffect(() =>{
 
 },[])
 
+
+
+
   return (
     <div className="App" style={{backgroundImage:`url(${backImage})`}} >
          {signup === true ? 

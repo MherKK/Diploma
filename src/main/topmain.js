@@ -5,17 +5,22 @@ import { dataRef } from "../firebase";
 export default function Topmain(){
 
     let [kgs,setKgs] = useState([]);
-
+    let [donationBank,setDonationBank] = useState(0);
     // getting total donations from firestore
     useEffect(() =>{
         dataRef.ref().child("Donators").on('value', data =>{
             const getData = Object.values(data.val()).map(value => value.kg);            
             setKgs(getData)
         })
+        let totalmountOfkgsRemoved = kgs.reduce((prev,next) => prev + +next ,0);
+        setDonationBank( 500 * totalmountOfkgsRemoved  / 2)
     },[])
 
+    console.log(`${donationBank} AMD `);
+    
     // calculating total amount of kgs 
     let totalmountOfkgsRemoved = kgs.reduce((prev,next) => prev + +next ,0);
+
 
     
     return(
